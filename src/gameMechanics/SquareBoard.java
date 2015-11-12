@@ -1,7 +1,5 @@
 package gameMechanics;
 
-import java.util.Scanner;
-
 public class SquareBoard extends Board{
 	
 	public SquareBoard() {
@@ -13,10 +11,7 @@ public class SquareBoard extends Board{
 		
 		for (int a = 0; a < board.length; a++) {
 			for (int b = 0; b < board.length; b++) {
-				Peg temp = new Peg();
-				temp.setCol(b);
-				temp.setRow(a);
-				board[a][b] = temp;
+				board[a][b].setPlaced(true);
 			}
 		}
 
