@@ -2,12 +2,8 @@ package gameMechanics;
 
 import java.util.Scanner;
 
-public class SquareBoard {
-	static int boardLength;
-	static int boardHeight;
-	static Peg[][] board = new Peg[boardLength][boardHeight];
+public class SquareBoard extends Board{
 	
-
 	public SquareBoard() {
 		SquareBoard.boardLength = 5;
 		SquareBoard.boardHeight = 5;
@@ -33,11 +29,20 @@ public class SquareBoard {
 			}
 		}
 	}
-	public int length(){
-		return SquareBoard.boardLength;
+	@Override
+	public void printBoard(){
+		
 	}
-	public int height(){
-		return SquareBoard.boardHeight;
+	@Override
+	public int getBoardLength(){
+		return Board.boardLength;
 	}
-
+	@Override
+	public int getBoardHeight(){
+		return Board.boardHeight;
+	}
+	@Override
+	public Peg[][] getBoard(){
+		return Board.board;
+	}
 }

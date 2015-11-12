@@ -4,10 +4,13 @@ public class Peg {
 	private int col;
 	private int row;
 	private boolean placed;
+	private boolean validPlacement;
+	
 	public Peg(){
 		col = 0;
 		row = 0;
 		placed = false;
+		validPlacement = true;
 	}
 	public Peg(int col, int row){
 		this.col = col;
@@ -30,5 +33,11 @@ public class Peg {
 	}
 	public void setRow(int row){
 		this.row = row;
+	}
+	public boolean isValid(){
+		return this.validPlacement;
+	}
+	public void setValid(boolean validPlacement){
+		this.validPlacement = validPlacement;
 	}
 }
