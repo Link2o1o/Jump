@@ -40,4 +40,8 @@ public class SquareBoard extends Board{
 	public Peg[][] getBoard(){
 		return Board.board;
 	}
+
+	public void makeMove() {
+		
+	}
 }
