@@ -3,17 +3,24 @@ package gameMechanics;
 import java.util.Scanner;
 
 public class SquareBoard {
-
-	char[][] board = new char[5][5];
+	static int boardLength;
+	static int boardHeight;
+	static Peg[][] board = new Peg[boardLength][boardHeight];
+	
 
 	public SquareBoard() {
+		SquareBoard.boardLength = 5;
+		SquareBoard.boardHeight = 5;
 	}
 
 	public void fillBoard() {
+		
 		for (int a = 0; a < board.length; a++) {
 			for (int b = 0; b < board.length; b++) {
-				board[a][b] = '*';
-
+				Peg temp = new Peg();
+				temp.setCol(b);
+				temp.setRow(a);
+				board[a][b] = temp;
 			}
 		}
 
@@ -25,6 +32,12 @@ public class SquareBoard {
 				System.out.print(board[i][j]);
 			}
 		}
+	}
+	public int length(){
+		return SquareBoard.boardLength;
+	}
+	public int height(){
+		return SquareBoard.boardHeight;
 	}
 
 }

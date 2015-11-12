@@ -25,4 +25,10 @@ public class Peg {
 	public int getRow(){
 		return this.row;
 	}
+	public void setCol(int col){
+		this.col = col;
+	}
+	public void setRow(int row){
+		this.row = row;
+	}
 }

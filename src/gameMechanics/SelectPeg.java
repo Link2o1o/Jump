@@ -2,13 +2,9 @@ package gameMechanics;
 
 public class SelectPeg {
 	
-	private Peg selected;
+	protected Peg selected;
 	
-	public SelectPeg(Peg selected){
-		this.selected=selected;
+	public SelectPeg(){
+		selected = new Peg();
 	}
-	public Peg getSelectedPeg(){
-		return this.selected;
-	}
-	
 }
