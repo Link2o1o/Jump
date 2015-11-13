@@ -19,7 +19,7 @@ public class StartButton {
 				+ "\ndiagonally. There must be an adjacent peg next to the one "
 				+ "\nselected and an empty spot immediately following the peg that was"
 				+ " \njumped over. You cannot move a peg one spot at a time, you must"
-				+ " \njump another peg. If you run out of moves and there is only"
+				+ " \njump another peg. If you run out of moves or there is only"
 				+ " \none peg left over, the game is over.\n");
 		
 		System.out.print("Would you like to play? (Y/N): ");
