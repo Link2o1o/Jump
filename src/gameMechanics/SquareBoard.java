@@ -30,11 +30,11 @@ public class SquareBoard extends Board{
 	}
 	@Override
 	public int getBoardLength(){
-		return Board.boardLength;
+		return SquareBoard.boardLength;
 	}
 	@Override
 	public int getBoardHeight(){
-		return Board.boardHeight;
+		return SquareBoard.boardHeight;
 	}
 	@Override
 	public Peg[][] getBoard(){

@@ -20,4 +20,12 @@ public class Peg {
 	public void setValid(boolean validPlacement){
 		this.validPlacement = validPlacement;
 	}
+	@Override
+	public String toString(){
+		if(placed){
+			return "*";
+		}
+		else
+			return "-";
+	}
 }
