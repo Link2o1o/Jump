@@ -8,6 +8,9 @@ public class SquareBoard extends Board {
 		SquareBoard.board = new Peg[length][height];
 	}
 
+	/*
+	 * Fills the Square board
+	 */
 	public void fillBoard() {
 		
 		for (int a = 0; a < board.length; a++) {
@@ -19,6 +22,9 @@ public class SquareBoard extends Board {
 		board[2][2].setPlaced(false);
 	}
 
+	/*
+	 * Prints the Square board
+	 */
 	@Override
 	public void printBoard() {
 
@@ -31,17 +37,25 @@ public class SquareBoard extends Board {
 			}
 		}
 	}
-
+	
+	/*
+	 * returns the Board Length
+	 */
 	@Override
-	public int getBoardLength() {
+	public int getLength() {
 		return SquareBoard.length;
 	}
-
+	
+	/*
+	 * returns the board height
+	 */
 	@Override
 	public int getHeight() {
 		return SquareBoard.height;
 	}
-
+	/*
+	 * returns the board itself  (These are kind of unnecessary)
+	 */
 	@Override
 	public Peg[][] getBoard() {
 		return SquareBoard.board;

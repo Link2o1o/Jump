@@ -7,14 +7,14 @@ public class Board {
 	
 	public Board(){
 	}
-	
+	//unused methods, to be overwritten.
 	public void fillBoard(){
 		
 	}
 	public void printBoard(){
 		
 	}
-	public int getBoardLength(){
+	public int getLength(){
 		return Board.length;
 	}
 	public int getHeight(){

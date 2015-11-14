@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class PickPiece extends SelectPeg {
 	private Scanner input = new Scanner(System.in);
-
+	/**
+	 * Runs the prompt for picking a peg to move, and tests it.
+	 */
 	public PickPiece() {
 		while (true) {
 			System.out.print("\nEnter a set of coordinates (Letter then number): ");
@@ -17,9 +19,12 @@ public class PickPiece extends SelectPeg {
 				System.out.println("That piece cannot be moved.  Try again.");
 		}
 	}
-
+	/**
+	 * Checks each pick to see if it can be moved or not.  Then saves the selection into SelectPeg.
+	 */
 	public static boolean checkMoves(String coord) {
 		char[] coords = coord.toCharArray();
+		int[] pegLoc = new int[2];
 		int possibleMoves = 0;
 		switch(coords[0]){
 		case 'a':
@@ -44,6 +49,7 @@ public class PickPiece extends SelectPeg {
 			break;
 		}
 		pegLoc[1] = ((int)coords[1])-49;
+		SelectPeg.setSelected(SquareBoard.board[pegLoc[0]][pegLoc[1]]);
 		if(pegLoc[0] > 1 && pegLoc[1] > 1){
 			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()){
 				possibleMoves++;

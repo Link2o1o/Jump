@@ -8,7 +8,7 @@ public class StartButton {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-
+		//Prints the prompt to start giving objective and instructions
 		System.out.println(
 				"Objective: Move one peg at a time to jump over an adjacent peg,"
 				+ " \nremoving the peg that was jumped over and continue to do so"
@@ -25,6 +25,7 @@ public class StartButton {
 		System.out.print("Would you like to play? (Y/N): ");
 		String choice = input.next();
 		
+		//Checks user prompt, runs game if Y
 		if(choice.equalsIgnoreCase("y")){
 			SquareBoard board = new SquareBoard();
 			
