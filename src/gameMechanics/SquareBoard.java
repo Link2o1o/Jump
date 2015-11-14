@@ -12,16 +12,15 @@ public class SquareBoard extends Board {
 		
 		for (int a = 0; a < board.length; a++) {
 			for (int b = 0; b < board.length; b++) {
-			if (a ==2 && b ==2){
-			    board[a][b] = new Peg();
-				board[a][b].setPlaced(false);
-			}
-			else				
 				board[a][b] = new Peg();
 				board[a][b].setPlaced(true);
-		
 			}
 		}
+		board[2][2].setPlaced(false);
+	}
+
+	@Override
+	public void printBoard() {
 
 		for (int i = 0; i < board.length; i++) {
 
@@ -31,11 +30,6 @@ public class SquareBoard extends Board {
 				System.out.print(board[i][j]);
 			}
 		}
-	}
-
-	@Override
-	public void printBoard() {
-
 	}
 
 	@Override
@@ -50,10 +44,7 @@ public class SquareBoard extends Board {
 
 	@Override
 	public Peg[][] getBoard() {
-		return Board.board;
+		return SquareBoard.board;
 	}
 
-	public void makeMove() {
-
-	}
 }
