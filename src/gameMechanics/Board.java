@@ -1,9 +1,9 @@
 package gameMechanics;
 
 public class Board {
-	protected static int boardLength;
-	protected static int boardHeight;
-	protected static Peg[][] board = new Peg[boardLength][boardHeight];
+	protected static int length;
+	protected static int height;
+	protected static Peg[][] board = new Peg[length][height];
 	
 	public Board(){
 	}
@@ -15,10 +15,10 @@ public class Board {
 		
 	}
 	public int getBoardLength(){
-		return Board.boardLength;
+		return Board.length;
 	}
-	public int getBoardHeight(){
-		return Board.boardHeight;
+	public int getHeight(){
+		return Board.height;
 	}
 	public Peg[][] getBoard(){
 		return Board.board;

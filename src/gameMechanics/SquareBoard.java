@@ -1,17 +1,25 @@
 package gameMechanics;
 
-public class SquareBoard extends Board{
-	
+public class SquareBoard extends Board {
+
 	public SquareBoard() {
-		SquareBoard.boardLength = 5;
-		SquareBoard.boardHeight = 5;
+		SquareBoard.length = 5;
+		SquareBoard.height = 5;
+		SquareBoard.board = new Peg[length][height];
 	}
 
 	public void fillBoard() {
 		
 		for (int a = 0; a < board.length; a++) {
 			for (int b = 0; b < board.length; b++) {
+			if (a ==2 && b ==2){
+			    board[a][b] = new Peg();
+				board[a][b].setPlaced(false);
+			}
+			else				
+				board[a][b] = new Peg();
 				board[a][b].setPlaced(true);
+		
 			}
 		}
 
@@ -24,24 +32,28 @@ public class SquareBoard extends Board{
 			}
 		}
 	}
+
 	@Override
-	public void printBoard(){
-		
+	public void printBoard() {
+
 	}
+
 	@Override
-	public int getBoardLength(){
-		return SquareBoard.boardLength;
+	public int getBoardLength() {
+		return SquareBoard.length;
 	}
+
 	@Override
-	public int getBoardHeight(){
-		return SquareBoard.boardHeight;
+	public int getHeight() {
+		return SquareBoard.height;
 	}
+
 	@Override
-	public Peg[][] getBoard(){
+	public Peg[][] getBoard() {
 		return Board.board;
 	}
 
 	public void makeMove() {
-		
+
 	}
 }

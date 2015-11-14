@@ -27,6 +27,7 @@ public class StartButton {
 		
 		if(choice.equalsIgnoreCase("y")){
 			SquareBoard board = new SquareBoard();
+			
 
 			board.fillBoard();
 			while(true){
