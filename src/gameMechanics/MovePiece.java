@@ -19,14 +19,14 @@ public class MovePiece extends SelectPeg {
 			if (checkMoves(coord)) {
 				System.out.print("Enter coordinates to move too (Letter then Number): ");
 				String moveCoord = input.next();
-				movePiece(moveCoord);
+				movePeg(moveCoord);
 				break;
 			} else
 				System.out.println("That piece cannot be moved.  Try again.");
 		}
 	}
 
-	private void movePiece(String moveCoord) {
+	private void movePeg(String moveCoord) {
 		if (possibleCoords.contains(moveCoord)) {
 			char[] coords = moveCoord.toCharArray();
 			int[] pegLoc = new int[2];
@@ -84,10 +84,13 @@ public class MovePiece extends SelectPeg {
 				secondTemp = temp[1];
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
 			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
-			possibleCoords.clear();
 		}
 		else
 			System.out.println("\nInvalid move, try again.\n");
+		for(int i =0; i < possibleCoords.size();i++)
+			System.out.print(possibleCoords.get(i)+ ", ");
+		System.out.println();
+		possibleCoords.clear();
 	}
 
 	/**
@@ -151,7 +154,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[0] < 2 && pegLoc[1] > 3) {
+		}if (pegLoc[0] < 2 && pegLoc[1] > 3) {
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
@@ -164,7 +167,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[0] > 3 && pegLoc[1] > 3) {
+		}if (pegLoc[0] > 3 && pegLoc[1] > 3) {
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
@@ -177,7 +180,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[0] > 3 && pegLoc[1] < 2) {
+		}if (pegLoc[0] > 3 && pegLoc[1] < 2) {
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
@@ -190,7 +193,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[0] < 2 && pegLoc[1] > 1 && pegLoc[1] < 4) {
+		}if (pegLoc[0] < 2 && pegLoc[1] > 1 && pegLoc[1] < 4) {
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
@@ -209,7 +212,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[1] < 2 && pegLoc[0] > 1 && pegLoc[0] < 4) {
+		}if (pegLoc[1] < 2 && pegLoc[0] > 1 && pegLoc[0] < 4) {
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
@@ -228,7 +231,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[0] > 3 && pegLoc[1] < 4 && pegLoc[1] > 1) {
+		}if (pegLoc[0] > 3 && pegLoc[1] < 4 && pegLoc[1] > 1) {
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
@@ -237,7 +240,7 @@ public class MovePiece extends SelectPeg {
 			}
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
-				pegLoc[1] = pegLoc[1] + 2;
+				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
@@ -247,7 +250,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else if (pegLoc[1] > 3 && pegLoc[0] < 4 && pegLoc[0] > 1) {
+		}if (pegLoc[1] > 3 && pegLoc[0] < 4 && pegLoc[0] > 1) {
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
@@ -266,7 +269,7 @@ public class MovePiece extends SelectPeg {
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		} else {
+		}if(pegLoc[0]>1&& pegLoc[0]<4 && pegLoc[1]>1 && pegLoc[1] < 4){
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
