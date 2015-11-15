@@ -3,8 +3,8 @@ package gameMechanics;
 public class SquareBoard extends Board {
 
 	public SquareBoard() {
-		SquareBoard.length = 5;
-		SquareBoard.height = 5;
+		SquareBoard.length = 6;
+		SquareBoard.height = 6;
 		SquareBoard.board = new Peg[length][height];
 	}
 
@@ -19,7 +19,7 @@ public class SquareBoard extends Board {
 				SquareBoard.board[a][b].setPlaced(true);
 			}
 		}
-		SquareBoard.board[2][2].setPlaced(false);
+		SquareBoard.board[2][3].setPlaced(false);
 	}
 
 	/*
@@ -29,7 +29,7 @@ public class SquareBoard extends Board {
 	public void printBoard() {
 
 		// Prints column numbers
-		System.out.print("  12345");
+		System.out.print("  123456");
 
 		for (int i = 0; i < SquareBoard.board.length; i++) {
 
@@ -45,6 +45,8 @@ public class SquareBoard extends Board {
 				System.out.print("D ");
 			else if (i == 4)
 				System.out.print("E ");
+			else if (i == 5)
+				System.out.print("F ");
 
 			for (int j = 0; j < SquareBoard.board.length; j++) {
 				System.out.print(SquareBoard.board[i][j]);
