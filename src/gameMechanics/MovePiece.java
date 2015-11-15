@@ -73,8 +73,8 @@ public class MovePiece extends SelectPeg {
 			} else {
 				SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
 				int firstTemp,secondTemp;
-				firstTemp = pegLoc[0]-temp[0];
-				secondTemp = pegLoc[1]-temp[1];
+				firstTemp = temp[0]-pegLoc[0];
+				secondTemp = temp[1]-pegLoc[1];
 				SquareBoard.board[temp[0]-firstTemp][temp[1]-secondTemp].setPlaced(false);
 				SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
 				possibleCoords.clear();
