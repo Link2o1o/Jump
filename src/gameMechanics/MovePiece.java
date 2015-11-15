@@ -206,6 +206,8 @@ public class MovePiece extends SelectPeg {
 		case 4:
 			output += "E";
 			break;
+		case 5:
+			output += "F";
 		}
 		switch (pegLoc[1]) {
 		case 0:
@@ -223,6 +225,8 @@ public class MovePiece extends SelectPeg {
 		case 4:
 			output += "5";
 			break;
+		case 5:
+			output += "6";
 		}
 		return output;
 	}
