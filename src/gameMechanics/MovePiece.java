@@ -68,17 +68,20 @@ public class MovePiece extends SelectPeg {
 				break;
 			}
 			pegLoc[1] = ((int) coords[1]) - 49;
-			if (temp[0] == pegLoc[0] && temp[1] == pegLoc[1]) {
-				System.out.println("You cannot move here.");
-			} else {
-				SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
-				int firstTemp,secondTemp;
-				firstTemp = temp[0]-pegLoc[0];
-				secondTemp = temp[1]-pegLoc[1];
-				SquareBoard.board[temp[0]-firstTemp][temp[1]-secondTemp].setPlaced(false);
-				SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
-				possibleCoords.clear();
+			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
+			int firstTemp = 0, secondTemp = 0, firstDif, secondDif;
+			if (temp[0] > pegLoc[0]) {
+				firstTemp = temp[0] - 1;
+			} else if (temp[0] < pegLoc[0]) {
+				firstTemp = temp[0]+1;
+			} else if (temp[1] > pegLoc[1]) {
+				secondTemp = temp[1] - 1;
+			} else if (temp[1] < pegLoc[1]) {
+				secondTemp = temp[1] + 1;
 			}
+			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
+			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
+			possibleCoords.clear();
 		}
 	}
 
