@@ -16,7 +16,12 @@ public class MovePiece extends SelectPeg {
 			System.out.print("\nEnter a set of coordinates (Letter then number): ");
 			String coord = input.next();
 			coord.toUpperCase();
-
+			if(coord.equalsIgnoreCase("r")){
+				new ResetButton(0);
+			}
+			else if(coord.equalsIgnoreCase("u")){
+				new UndoButton(SquareBoard.board,0);
+			}
 			if (checkMoves(coord)) {
 				System.out.print("Enter coordinates to move to (Letter then Number): ");
 				String moveCoord = input.next();

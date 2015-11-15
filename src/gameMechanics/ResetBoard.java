@@ -1,11 +1,10 @@
 package gameMechanics;
 
 public class ResetBoard {
-	public ResetBoard(Peg[][] board, int type){
+	public ResetBoard(int type){
 		switch(type){
 		case 0:
-			SquareBoard newBoard = new SquareBoard();
-			newBoard.fillBoard();
+			SquareBoard.fillBoard();
 		}
 	}
 

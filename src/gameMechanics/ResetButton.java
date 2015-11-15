@@ -3,7 +3,8 @@
 package gameMechanics;
 
 public class ResetButton {
-	public ResetButton(Peg[][] board, int type){
-		new ResetBoard(board, type);
+	public ResetButton(int type){
+		new ResetBoard(type);
+		SquareBoard.printBoard();
 	}
 }

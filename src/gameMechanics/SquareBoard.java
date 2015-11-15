@@ -11,7 +11,7 @@ public class SquareBoard extends Board {
 	/*
 	 * Fills the Square board
 	 */
-	public void fillBoard() {
+	public static void fillBoard() {
 
 		for (int a = 0; a < SquareBoard.board.length; a++) {
 			for (int b = 0; b < SquareBoard.board.length; b++) {
@@ -25,8 +25,7 @@ public class SquareBoard extends Board {
 	/*
 	 * Prints the Square board
 	 */
-	@Override
-	public void printBoard() {
+	public static void printBoard() {
 
 		// Prints column numbers
 		System.out.print("  123456");

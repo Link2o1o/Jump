@@ -8,10 +8,10 @@ public class Board {
 	public Board(){
 	}
 	//unused methods, to be overwritten.
-	public void fillBoard(){
+	public static void fillBoard(){
 		
 	}
-	public void printBoard(){
+	public static void printBoard(){
 		
 	}
 	public int getLength(){
