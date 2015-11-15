@@ -81,12 +81,12 @@ public class MovePiece extends SelectPeg {
 			// returns the number 0-5
 			pegLoc[1] = ((int) coords[1]) - 49;
 			// Set the location moved to, to true.(Peg is there)
-			SaveBoard.thirdSave[pegLoc[0]][pegLoc[1]] = tempMove2[pegLoc[0]][pegLoc[1]];
-			SaveBoard.secondSave[pegLoc[0]][pegLoc[1]] = tempMove1[pegLoc[0]][pegLoc[1]];
-			tempMove2[pegLoc[0]][pegLoc[1]] = SaveBoard.secondSave[pegLoc[0]][pegLoc[1]];
+			//SaveBoard.thirdSave[pegLoc[0]][pegLoc[1]] = tempMove2[pegLoc[0]][pegLoc[1]];
+			//SaveBoard.secondSave[pegLoc[0]][pegLoc[1]] = tempMove1[pegLoc[0]][pegLoc[1]];
+			//tempMove2[pegLoc[0]][pegLoc[1]] = SaveBoard.secondSave[pegLoc[0]][pegLoc[1]];
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
-			SaveBoard.firstSave[pegLoc[0]][pegLoc[1]] = SquareBoard.board[pegLoc[0]][pegLoc[1]];
-			tempMove1[pegLoc[0]][pegLoc[1]] = SaveBoard.firstSave[pegLoc[0]][pegLoc[1]];
+			//SaveBoard.firstSave[pegLoc[0]][pegLoc[1]] = SquareBoard.board[pegLoc[0]][pegLoc[1]];
+			//tempMove1[pegLoc[0]][pegLoc[1]] = SaveBoard.firstSave[pegLoc[0]][pegLoc[1]];
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
 			if (temp[0] > pegLoc[0]) {
@@ -101,20 +101,20 @@ public class MovePiece extends SelectPeg {
 				secondTemp = pegLoc[1] - 1;
 			} else
 				secondTemp = temp[1];
-			SaveBoard.thirdSave[firstTemp][secondTemp] = tempMove2[firstTemp][secondTemp];
-			SaveBoard.secondSave[firstTemp][secondTemp] = tempMove1[firstTemp][secondTemp];
-			tempMove2[firstTemp][secondTemp] = SaveBoard.secondSave[firstTemp][secondTemp];
+			//SaveBoard.thirdSave[firstTemp][secondTemp] = tempMove2[firstTemp][secondTemp];
+			//SaveBoard.secondSave[firstTemp][secondTemp] = tempMove1[firstTemp][secondTemp];
+			//tempMove2[firstTemp][secondTemp] = SaveBoard.secondSave[firstTemp][secondTemp];
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
-			SaveBoard.firstSave[firstTemp][secondTemp] = SquareBoard.board[firstTemp][secondTemp];
-			tempMove1[firstTemp][secondTemp] = SaveBoard.firstSave[firstTemp][secondTemp];
+			//SaveBoard.firstSave[firstTemp][secondTemp] = SquareBoard.board[firstTemp][secondTemp];
+			//tempMove1[firstTemp][secondTemp] = SaveBoard.firstSave[firstTemp][secondTemp];
 			
 			// sets the origin to false(Peg no longer there)
-			SaveBoard.thirdSave[temp[0]][temp[1]] = tempMove2[temp[0]][temp[1]];
-			SaveBoard.secondSave[temp[0]][temp[1]] = tempMove1[temp[0]][temp[1]];
-			tempMove2[temp[0]][temp[1]] = SaveBoard.secondSave[temp[0]][temp[1]];
+			//SaveBoard.thirdSave[temp[0]][temp[1]] = tempMove2[temp[0]][temp[1]];
+			//SaveBoard.secondSave[temp[0]][temp[1]] = tempMove1[temp[0]][temp[1]];
+			//tempMove2[temp[0]][temp[1]] = SaveBoard.secondSave[temp[0]][temp[1]];
 			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
-			SaveBoard.firstSave[temp[0]][temp[1]] = SquareBoard.board[temp[0]][temp[1]];
-			tempMove1[temp[0]][temp[1]] = SaveBoard.firstSave[temp[0]][temp[1]];
+			//SaveBoard.firstSave[temp[0]][temp[1]] = SquareBoard.board[temp[0]][temp[1]];
+			//tempMove1[temp[0]][temp[1]] = SaveBoard.firstSave[temp[0]][temp[1]];
 		}
 		// Returns if what you put is an invalid move.
 		else
