@@ -178,7 +178,7 @@ public class MovePiece extends SelectPeg {
 				pegLoc[1] = pegLoc[1] - 2;
 			}
 		}
-		//Test bottem left quadrant; 0-1,4-5
+		//Test bottom left quadrant; 0-1,4-5
 		if (pegLoc[0] < 2 && pegLoc[1] > 3) {
 			//Tests for possible move; up and right for these four
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
@@ -196,7 +196,7 @@ public class MovePiece extends SelectPeg {
 				pegLoc[1] = pegLoc[1] + 2;
 			}
 		}
-		//Test bottem right quadrant; 4-5
+		//Test bottom right quadrant; 4-5
 		if (pegLoc[0] > 3 && pegLoc[1] > 3) {
 			//Tests for Possible moves; up and left
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
@@ -347,7 +347,9 @@ public class MovePiece extends SelectPeg {
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
+			
 		}
+		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
 		return possibleMoves;
 	}
 
