@@ -29,7 +29,7 @@ public class SquareBoard extends Board {
 	public void printBoard() {
 
 		// Prints column numbers
-		System.out.print(" 12345");
+		System.out.print("  12345");
 
 		for (int i = 0; i < board.length; i++) {
 
