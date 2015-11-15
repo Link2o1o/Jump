@@ -9,6 +9,14 @@ public class PlacePiece extends SelectPeg{
 	 */
 	public PlacePiece(){
 		System.out.print("Enter a coordinate to move to (Letter then number): ");
+		String moveTo = input.next();
+		
+		if (checkMoves(moveTo)) {
+		}
+		else
+			System.out.println("That piece cannot be moved.  Try again.");
+		
+		
 		
 	}
 	/**
