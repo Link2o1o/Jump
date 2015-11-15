@@ -49,9 +49,10 @@ public class PlacePiece extends SelectPeg {
 
 			//SquareBoard board = new SquareBoard();
 			//board.printBoard();
-			//board[a][b].setPlaced(false);
+			//board[a][b].setPlaced(true);
 			//If move horizontally
 			//new int c = b-1
+			//PickPiece will be .setPlaced(false)
 			//board[a][c].setPlaced(false)
 			//If user moves vertically
 			//int d = a-1
