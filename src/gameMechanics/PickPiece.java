@@ -1,8 +1,10 @@
 package gameMechanics;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PickPiece extends SelectPeg {
+	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
@@ -13,10 +15,46 @@ public class PickPiece extends SelectPeg {
 			String coord = input.next();
 
 			if (checkMoves(coord)) {
+				System.out.print("Enter coordinates to move too (Letter then Number): ");
+				String moveCoord = input.next();
+				movePiece(moveCoord);
 				break;
 			}
 			else
 				System.out.println("That piece cannot be moved.  Try again.");
+		}
+	}
+	private void movePiece(String moveCoord) {
+		if(possibleCoords.contains(moveCoord)){
+			char[] coords = moveCoord.toCharArray();
+			int[] pegLoc = new int[2];
+
+			switch(coords[0]){
+			case 'a':
+			case 'A':
+				pegLoc[0] = 0;
+				break;
+			case 'b':
+			case 'B':
+				pegLoc[0] = 1;
+				break;
+			case 'c':
+			case 'C':
+				pegLoc[0] = 2;
+				break;
+			case 'd':
+			case 'D':
+				pegLoc[0] = 3;
+				break;
+			case 'e':
+			case 'E':
+				pegLoc[0] = 4;
+				break;
+			}
+			pegLoc[1] = ((int)coords[1])-49;
+			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
+			int[] temp = getSelected();
+			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
 		}
 	}
 	/**
@@ -49,43 +87,97 @@ public class PickPiece extends SelectPeg {
 			break;
 		}
 		pegLoc[1] = ((int)coords[1])-49;
-		SelectPeg.setSelected(SquareBoard.board[pegLoc[0]][pegLoc[1]]);
+		SelectPeg.setSelected(pegLoc);
 		if(pegLoc[0] > 1 && pegLoc[1] > 1){
 			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]-1][pegLoc[1]].isPlaced()){
+				pegLoc[0] = pegLoc[0]-2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]-1].isPlaced()){
+				pegLoc[1] = pegLoc[1]-2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 		}
 		if(pegLoc[0] < 3 && pegLoc[1] < 3){
 			if(!SquareBoard.board[pegLoc[0]+2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]+1][pegLoc[1]].isPlaced()){
+				pegLoc[0] = pegLoc[0]+2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]+2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]+1].isPlaced()){
+				pegLoc[1] = pegLoc[1]+2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 		}
 		if(pegLoc[0] > 1 && pegLoc[1] < 3){
 			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]-1][pegLoc[1]].isPlaced()){
+				pegLoc[0] = pegLoc[0]-2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]+2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]+1].isPlaced()){
+				pegLoc[1] = pegLoc[1]+2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 		}
 		if(pegLoc[0] < 3 && pegLoc[1] > 1){
 			if(!SquareBoard.board[pegLoc[0]+2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]+1][pegLoc[1]].isPlaced()){
+				pegLoc[0] = pegLoc[0]+2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]-1].isPlaced()){
+				pegLoc[1] = pegLoc[1]-2;
 				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
 			}
 		}
 		if(possibleMoves > 0)
 			return true;
 		else
 			return false;
+	}
+	public static String parseLocToString(int[] pegLoc){
+		String output = "";
+		switch (pegLoc[0]){
+		case 0:
+			output += "A";
+			break;
+		case 1:
+			output += "B";
+			break;
+		case 2:
+			output += "C";
+			break;
+		case 3:
+			output += "D";
+			break;
+		case 4:
+			output += "E";
+			break;
+		}
+		switch(pegLoc[1]){
+		case 0:
+			output += "1";
+			break;
+		case 1:
+			output += "2";
+			break;
+		case 2:
+			output += "3";
+			break;
+		case 3:
+			output += "4";
+			break;
+		case 4:
+			output += "5";
+			break;
+		}
+		return output;
 	}
 
 }

@@ -2,14 +2,14 @@ package gameMechanics;
 
 public class SelectPeg {
 	
-	private static Peg selected;
+	private static int[] selected;
 	
 	public SelectPeg(){
 	}
-	public Peg getSelected(){
+	public static int[] getSelected(){
 		return SelectPeg.selected;
 	}
-	public static void setSelected(Peg selected){
+	public static void setSelected(int[] selected){
 		SelectPeg.selected = selected;
 	}
 }

@@ -34,7 +34,6 @@ public class StartButton {
 			while(true){
 				board.printBoard();
 				new PickPiece();
-				new PlacePiece();
 			}
 		}
 		else
