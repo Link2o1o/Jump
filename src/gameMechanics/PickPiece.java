@@ -51,10 +51,10 @@ public class PickPiece extends SelectPeg {
 		pegLoc[1] = ((int)coords[1])-49;
 		SelectPeg.setSelected(SquareBoard.board[pegLoc[0]][pegLoc[1]]);
 		if(pegLoc[0] > 1 && pegLoc[1] > 1){
-			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()){
+			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]-1][pegLoc[1]].isPlaced()){
 				possibleMoves++;
 			}
-			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()){
+			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]-1].isPlaced()){
 				possibleMoves++;
 			}
 		}
@@ -67,18 +67,18 @@ public class PickPiece extends SelectPeg {
 			}
 		}
 		if(pegLoc[0] > 1 && pegLoc[1] < 3){
-			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()){
+			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]-1][pegLoc[1]].isPlaced()){
 				possibleMoves++;
 			}
-			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]+2].isPlaced()){
+			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]+2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]+1].isPlaced()){
 				possibleMoves++;
 			}
 		}
 		if(pegLoc[0] < 3 && pegLoc[1] > 1){
-			if(!SquareBoard.board[pegLoc[0]+2][pegLoc[1]].isPlaced()){
+			if(!SquareBoard.board[pegLoc[0]+2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]+1][pegLoc[1]].isPlaced()){
 				possibleMoves++;
 			}
-			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()){
+			else if(!SquareBoard.board[pegLoc[0]][pegLoc[1]-2].isPlaced()&&SquareBoard.board[pegLoc[0]][pegLoc[1]-1].isPlaced()){
 				possibleMoves++;
 			}
 		}

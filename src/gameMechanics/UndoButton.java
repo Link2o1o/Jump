@@ -3,5 +3,7 @@
 package gameMechanics;
 
 public class UndoButton {
-
+	public UndoButton(){
+		
+	}
 }
