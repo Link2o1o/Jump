@@ -74,15 +74,13 @@ public class MovePiece extends SelectPeg {
 				firstTemp = temp[0] - 1;
 			} else if (temp[0] < pegLoc[0]) {
 				firstTemp = pegLoc[0] - 1;
-			}
-			else
+			} else
 				firstTemp = temp[0];
 			if (temp[1] > pegLoc[1]) {
 				secondTemp = temp[1] - 1;
 			} else if (temp[1] < pegLoc[1]) {
 				secondTemp = pegLoc[1] - 1;
-			}
-			else
+			} else
 				secondTemp = temp[1];
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
 			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
@@ -141,50 +139,152 @@ public class MovePiece extends SelectPeg {
 		if (pegLoc[0] < 2 && pegLoc[1] < 2) {
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
-				pegLoc[0] = pegLoc[0] - 2;
-				possibleMoves++;
-				possibleCoords.add(parseLocToString(pegLoc));
-			} else if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
-					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
-				pegLoc[1] = pegLoc[1] - 2;
-				possibleMoves++;
-				possibleCoords.add(parseLocToString(pegLoc));
-			}
-		}
-		if (pegLoc[0] < 4 && pegLoc[1] < 4) {
-			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
-					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
-			} else if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		}
-		if (pegLoc[0] > 1 && pegLoc[1] < 4) {
+		} else if (pegLoc[0] < 3 && pegLoc[1] < 2) {
 			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
-			} else if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
 			}
-		}
-		if (pegLoc[0] < 4 && pegLoc[1] > 1) {
+		} else if (pegLoc[0] > 3 && pegLoc[1] > 3) {
+			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else if (pegLoc[0] > 3 && pegLoc[1] < 2) {
+			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else if (pegLoc[0] < 2 && pegLoc[1] > 1 && pegLoc[1] < 4) {
 			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
-			} else if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else if (pegLoc[1] < 2 && pegLoc[0] > 1 && pegLoc[0] < 4) {
+			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0 + 2]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[0] = pegLoc[0] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else if (pegLoc[0] > 3 && pegLoc[1] < 4 && pegLoc[1] > 1) {
+			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else if (pegLoc[1] > 3 && pegLoc[0] < 4 && pegLoc[0] > 1) {
+			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+		} else {
+			if (!SquareBoard.board[pegLoc[0] + 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
+				pegLoc[0] = pegLoc[0] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] + 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] + 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0]][pegLoc[1] - 2].isPlaced()
+					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
+				pegLoc[1] = pegLoc[1] - 2;
+				possibleMoves++;
+				possibleCoords.add(parseLocToString(pegLoc));
+			}
+			if (!SquareBoard.board[pegLoc[0] - 2][pegLoc[1]].isPlaced()
+					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
