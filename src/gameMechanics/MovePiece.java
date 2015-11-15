@@ -3,7 +3,7 @@ package gameMechanics;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PickPiece extends SelectPeg {
+public class MovePiece extends SelectPeg {
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
 	private static int[] temp = new int[2];
@@ -11,7 +11,7 @@ public class PickPiece extends SelectPeg {
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
 	 */
-	public PickPiece() {
+	public MovePiece() {
 		while (true) {
 			System.out.print("\nEnter a set of coordinates (Letter then number): ");
 			String coord = input.next();

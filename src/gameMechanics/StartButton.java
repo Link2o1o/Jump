@@ -33,7 +33,7 @@ public class StartButton {
 			board.fillBoard();
 			while(true){
 				board.printBoard();
-				new PickPiece();
+				new MovePiece();
 			}
 		}
 		else
