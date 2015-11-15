@@ -31,9 +31,13 @@ public class StartButton {
 			
 
 			board.fillBoard();
+			if (EndGame.gameOver())
+				System.out.println("Game Over. No available moves");
+			else				
 			while(true){
 				board.printBoard();
 				new MovePiece();
+				
 			}
 		}
 		else
