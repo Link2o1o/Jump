@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class PickPiece extends SelectPeg {
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
+	private static int[] temp = new int[2];
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
 	 */
@@ -53,6 +54,8 @@ public class PickPiece extends SelectPeg {
 			}
 			pegLoc[1] = ((int)coords[1])-49;
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
+			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
+			possibleCoords.clear();
 		}
 	}
 	/**
@@ -85,12 +88,12 @@ public class PickPiece extends SelectPeg {
 			break;
 		}
 		pegLoc[1] = ((int)coords[1])-49;
-		SelectPeg.setSelected(pegLoc);
-		SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(false);
+		temp[0] = pegLoc[0];
+		temp[1] = pegLoc[1];
 
 		if(pegLoc[0] > 1 && pegLoc[1] > 1){
 			if(!SquareBoard.board[pegLoc[0]-2][pegLoc[1]].isPlaced()&&SquareBoard.board[pegLoc[0]-1][pegLoc[1]].isPlaced()){
-				SquareBoard.board[pegLoc[0]-1][pegLoc[1]].setPlaced(false);
+	
 				pegLoc[0] = pegLoc[0]-2;
 				possibleMoves++;
 				possibleCoords.add(parseLocToString(pegLoc));
