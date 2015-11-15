@@ -40,10 +40,10 @@ public class Peg {
 	@Override
 	public String toString(){
 		if(this.placed && this.validPlacement){
-			return "*";
+			return "+";
 		}
 		else if(!this.placed && this.validPlacement)
-			return "-";
+			return "O";
 		else
 			return " ";
 	}
