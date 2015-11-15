@@ -13,13 +13,13 @@ public class SquareBoard extends Board {
 	 */
 	public void fillBoard() {
 
-		for (int a = 0; a < board.length; a++) {
-			for (int b = 0; b < board.length; b++) {
-				board[a][b] = new Peg();
-				board[a][b].setPlaced(true);
+		for (int a = 0; a < SquareBoard.board.length; a++) {
+			for (int b = 0; b < SquareBoard.board.length; b++) {
+				SquareBoard.board[a][b] = new Peg();
+				SquareBoard.board[a][b].setPlaced(true);
 			}
 		}
-		board[2][2].setPlaced(false);
+		SquareBoard.board[2][2].setPlaced(false);
 	}
 
 	/*
@@ -31,7 +31,7 @@ public class SquareBoard extends Board {
 		// Prints column numbers
 		System.out.print("  12345");
 
-		for (int i = 0; i < board.length; i++) {
+		for (int i = 0; i < SquareBoard.board.length; i++) {
 
 			System.out.println();
 			// Prints row letter
@@ -46,8 +46,8 @@ public class SquareBoard extends Board {
 			else if (i == 4)
 				System.out.print("E ");
 
-			for (int j = 0; j < board.length; j++) {
-				System.out.print(board[i][j]);
+			for (int j = 0; j < SquareBoard.board.length; j++) {
+				System.out.print(SquareBoard.board[i][j]);
 
 			}
 
