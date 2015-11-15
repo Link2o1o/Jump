@@ -1,48 +1,44 @@
 package gameMechanics;
 
 public class SaveBoard {
-	private static Peg[][] thirdSave;
-	private static Peg[][] secondSave;
-	private static Peg[][] firstSave;
+	static Peg[][] thirdSave;
+	static Peg[][] secondSave;
+	static Peg[][] firstSave;
 	private static int possibleUndo = 3;
+	private static int timeSaved = 0;
 	private static int count;
-	
+
 	/**
 	 * no-arg constructor, currently used to make empty SaveBoard Objects
 	 */
-	public SaveBoard(){
-		
-	}
-	/**
-	 * Saves up to three boards whenever constructor is used.
-	 * 
-	 * @param board
-	 */
 	public SaveBoard(Peg[][] board) {
 		count = 0;
-		SaveBoard.thirdSave = SaveBoard.secondSave;
-		SaveBoard.secondSave = SaveBoard.firstSave;
-		SaveBoard.firstSave = board;
+		SaveBoard.thirdSave = new Peg[board.length][board.length];
+		SaveBoard.secondSave = new Peg[board.length][board.length];
+		SaveBoard.firstSave = new Peg[board.length][board.length];
 	}
-
+	
+	public static void save(){
+		timeSaved++;
+	}
 	/**
 	 * For undoing last move up to three times possible.
 	 */
-	public static void undo(Peg[][] board) {
+	public static void undo() {
 		if (possibleUndo != 0) {
 			switch (count) {
-			case 0:
-				board = SaveBoard.firstSave;
+			case 2:
+				SquareBoard.board = SaveBoard.firstSave;
 				possibleUndo--;
 				count++;
 				break;
 			case 1:
-				board = SaveBoard.secondSave;
+				SquareBoard.board = SaveBoard.secondSave;
 				possibleUndo--;
 				count++;
 				break;
-			case 2:
-				board = SaveBoard.thirdSave;
+			case 0:
+				SquareBoard.board = SaveBoard.thirdSave;
 				possibleUndo--;
 				count++;
 				break;
@@ -50,8 +46,7 @@ public class SaveBoard {
 				System.out.println("You are out of UNDO's.");
 				break;
 			}
-		}
-		else
+		} else
 			System.out.println("You are out of UNDO's.");
 	}
 

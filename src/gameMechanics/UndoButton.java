@@ -3,10 +3,11 @@
 package gameMechanics;
 
 public class UndoButton {
-	public UndoButton(Peg[][] board,int type){
+	public UndoButton(int type){
 		switch(type){
 		case 0:
-			SaveBoard.undo(board);
+			SaveBoard.undo();
+			SquareBoard.printBoard();
 		}
 	}
 }

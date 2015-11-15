@@ -15,10 +15,19 @@ public class SquareBoard extends Board {
 
 		for (int a = 0; a < SquareBoard.board.length; a++) {
 			for (int b = 0; b < SquareBoard.board.length; b++) {
+				SaveBoard.firstSave[a][b] = new Peg();
+				SaveBoard.secondSave[a][b] = new Peg();
+				SaveBoard.thirdSave[a][b] = new Peg();
 				SquareBoard.board[a][b] = new Peg();
+				SaveBoard.firstSave[a][b].setPlaced(true);
+				SaveBoard.secondSave[a][b].setPlaced(true);
+				SaveBoard.thirdSave[a][b].setPlaced(true);
 				SquareBoard.board[a][b].setPlaced(true);
 			}
 		}
+		SaveBoard.firstSave[2][3].setPlaced(false);
+		SaveBoard.secondSave[2][3].setPlaced(false);
+		SaveBoard.thirdSave[2][3].setPlaced(false);
 		SquareBoard.board[2][3].setPlaced(false);
 	}
 
