@@ -1,53 +1,49 @@
 package gameMechanics;
 
+import java.util.ArrayList;
+
 public class SaveBoard {
 	static Peg[][] thirdSave;
 	static Peg[][] secondSave;
 	static Peg[][] firstSave;
+	static ArrayList<String> moves = new ArrayList<String>();
 	private static int possibleUndo = 3;
-	private static int timeSaved = 0;
-	private static int count;
+	private static int index = 0;
 
 	/**
 	 * no-arg constructor, currently used to make empty SaveBoard Objects
 	 */
-	public SaveBoard(Peg[][] board) {
-		count = 0;
-		SaveBoard.thirdSave = new Peg[board.length][board.length];
-		SaveBoard.secondSave = new Peg[board.length][board.length];
-		SaveBoard.firstSave = new Peg[board.length][board.length];
+	public SaveBoard() {
+		moves.clear();
 	}
-	
-	public static void save(){
-		timeSaved++;
+
+	public static void save(String movedTo, String jumpedOver, String movedFrom) {
+			moves.add(movedTo);
+			moves.add(jumpedOver);
+			moves.add(movedFrom);
+			index = moves.size()-1;
 	}
+
 	/**
 	 * For undoing last move up to three times possible.
 	 */
 	public static void undo() {
+		int[] firstMove, secondMove, thirdMove;
 		if (possibleUndo != 0) {
-			switch (count) {
-			case 2:
-				SquareBoard.board = SaveBoard.firstSave;
+				firstMove = MovePiece.parseStringToLoc(moves.get(index-2));
+				SquareBoard.board[firstMove[0]][firstMove[1]].setPlaced(false);
+				secondMove = MovePiece.parseStringToLoc(moves.get(index-1));
+				SquareBoard.board[secondMove[0]][secondMove[1]].setPlaced(true);
+				thirdMove = MovePiece.parseStringToLoc(moves.get(index));
+				SquareBoard.board[thirdMove[0]][thirdMove[1]].setPlaced(true);
+				moves.remove(index-2);
+				moves.remove(index-2);
+				moves.remove(index-2);
+				index = index - 3;
 				possibleUndo--;
-				count++;
-				break;
-			case 1:
-				SquareBoard.board = SaveBoard.secondSave;
-				possibleUndo--;
-				count++;
-				break;
-			case 0:
-				SquareBoard.board = SaveBoard.thirdSave;
-				possibleUndo--;
-				count++;
-				break;
-			default:
-				System.out.println("You are out of UNDO's.");
-				break;
-			}
 		} else
 			System.out.println("You are out of UNDO's.");
+
 	}
 
 }

@@ -5,6 +5,6 @@ package gameMechanics;
 public class ResetButton {
 	public ResetButton(int type){
 		new ResetBoard(type);
-		SquareBoard.printBoard();
+		new SaveBoard();
 	}
 }

@@ -6,23 +6,30 @@ import java.util.Scanner;
 public class MovePiece extends SelectPeg {
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
-	private static int[] temp = new int[2];
-	private static Peg[][] tempMove1;
-	private static Peg[][] tempMove2;
+	private static int[] startCoords = new int[2];
 
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
 	 */
 	public MovePiece() {
+		String coord;
 		while (true) {
-
+			if(possibleCoords.isEmpty()){
 			System.out.print("\nEnter a set of coordinates (Letter then number): ");
-			String coord = input.next();
+			coord = input.next();
 			coord.toUpperCase();
+			}
+			else{
+				System.out.print("\nEnter a set of coordinates (Letter then number)(Undo: \"U\" Reset: \"R\"): ");
+				coord = input.next();
+				coord.toUpperCase();
+			}
 			if (coord.equalsIgnoreCase("r")) {
 				new ResetButton(0);
+				break;
 			} else if (coord.equalsIgnoreCase("u")) {
 				new UndoButton(0);
+				break;
 			} else {
 				if (checkMoves(coord)) {
 					System.out.print("Enter coordinates to move to (Letter then Number): ");
@@ -39,82 +46,29 @@ public class MovePiece extends SelectPeg {
 
 	private void movePeg(String moveCoord) {
 		if (possibleCoords.contains(moveCoord)) {
-			char[] coords = moveCoord.toCharArray();
-			int[] pegLoc = new int[2];
-			// Switch checks what is in the array[index] against the case's
-			switch (coords[0]) {
-			case 'a':
-				pegLoc[0] = 0;
-				break;
-			case 'A':
-				pegLoc[0] = 0;
-				break;
-			case 'b':
-				pegLoc[0] = 1;
-				break;
-			case 'B':
-				pegLoc[0] = 1;
-				break;
-			case 'c':
-				pegLoc[0] = 2;
-				break;
-			case 'C':
-				pegLoc[0] = 2;
-				break;
-			case 'd':
-				pegLoc[0] = 3;
-				break;
-			case 'D':
-				pegLoc[0] = 3;
-				break;
-			case 'e':
-				pegLoc[0] = 4;
-				break;
-			case 'E':
-				pegLoc[0] = 4;
-				break;
-			case 'f':
-			case 'F':
-				pegLoc[0] = 5;
-				break;
-			}
-			// returns the number 0-5
-			pegLoc[1] = ((int) coords[1]) - 49;
+			int[] pegLoc = parseStringToLoc(moveCoord);
 			// Set the location moved to, to true.(Peg is there)
-			//SaveBoard.thirdSave[pegLoc[0]][pegLoc[1]] = tempMove2[pegLoc[0]][pegLoc[1]];
-			//SaveBoard.secondSave[pegLoc[0]][pegLoc[1]] = tempMove1[pegLoc[0]][pegLoc[1]];
-			//tempMove2[pegLoc[0]][pegLoc[1]] = SaveBoard.secondSave[pegLoc[0]][pegLoc[1]];
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
-			//SaveBoard.firstSave[pegLoc[0]][pegLoc[1]] = SquareBoard.board[pegLoc[0]][pegLoc[1]];
-			//tempMove1[pegLoc[0]][pegLoc[1]] = SaveBoard.firstSave[pegLoc[0]][pegLoc[1]];
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
-			if (temp[0] > pegLoc[0]) {
-				firstTemp = temp[0] - 1;
-			} else if (temp[0] < pegLoc[0]) {
+			if (startCoords[0] > pegLoc[0]) {
+				firstTemp = startCoords[0] - 1;
+			} else if (startCoords[0] < pegLoc[0]) {
 				firstTemp = pegLoc[0] - 1;
 			} else
-				firstTemp = temp[0];
-			if (temp[1] > pegLoc[1]) {
-				secondTemp = temp[1] - 1;
-			} else if (temp[1] < pegLoc[1]) {
+				firstTemp = startCoords[0];
+			if (startCoords[1] > pegLoc[1]) {
+				secondTemp = startCoords[1] - 1;
+			} else if (startCoords[1] < pegLoc[1]) {
 				secondTemp = pegLoc[1] - 1;
 			} else
-				secondTemp = temp[1];
-			//SaveBoard.thirdSave[firstTemp][secondTemp] = tempMove2[firstTemp][secondTemp];
-			//SaveBoard.secondSave[firstTemp][secondTemp] = tempMove1[firstTemp][secondTemp];
-			//tempMove2[firstTemp][secondTemp] = SaveBoard.secondSave[firstTemp][secondTemp];
+				secondTemp = startCoords[1];
+			int[] temp = new int[2];
+			temp[0] = firstTemp;
+			temp[1] = secondTemp;
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
-			//SaveBoard.firstSave[firstTemp][secondTemp] = SquareBoard.board[firstTemp][secondTemp];
-			//tempMove1[firstTemp][secondTemp] = SaveBoard.firstSave[firstTemp][secondTemp];
-			
-			// sets the origin to false(Peg no longer there)
-			//SaveBoard.thirdSave[temp[0]][temp[1]] = tempMove2[temp[0]][temp[1]];
-			//SaveBoard.secondSave[temp[0]][temp[1]] = tempMove1[temp[0]][temp[1]];
-			//tempMove2[temp[0]][temp[1]] = SaveBoard.secondSave[temp[0]][temp[1]];
-			SquareBoard.board[temp[0]][temp[1]].setPlaced(false);
-			//SaveBoard.firstSave[temp[0]][temp[1]] = SquareBoard.board[temp[0]][temp[1]];
-			//tempMove1[temp[0]][temp[1]] = SaveBoard.firstSave[temp[0]][temp[1]];
+			SquareBoard.board[startCoords[0]][startCoords[1]].setPlaced(false);
+			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(startCoords));
 		}
 		// Returns if what you put is an invalid move.
 		else
@@ -127,53 +81,16 @@ public class MovePiece extends SelectPeg {
 	 * selection into SelectPeg.
 	 */
 	public static boolean checkMoves(String coord) {
-		char[] coords = coord.toCharArray();
 		// The location selected in the array
-		int[] pegLoc = new int[2];
+		int[] pegLoc = parseStringToLoc(coord);
 		int possibleMoves = 0;
 		// returns the number value for character inputted
-		switch (coords[0]) {
-		case 'a':
-			pegLoc[0] = 0;
-			break;
-		case 'A':
-			pegLoc[0] = 0;
-			break;
-		case 'b':
-			pegLoc[0] = 1;
-			break;
-		case 'B':
-			pegLoc[0] = 1;
-			break;
-		case 'c':
-			pegLoc[0] = 2;
-			break;
-		case 'C':
-			pegLoc[0] = 2;
-			break;
-		case 'd':
-			pegLoc[0] = 3;
-			break;
-		case 'D':
-			pegLoc[0] = 3;
-			break;
-		case 'e':
-			pegLoc[0] = 4;
-			break;
-		case 'E':
-			pegLoc[0] = 4;
-			break;
-		case 'f':
-		case 'F':
-			pegLoc[0] = 5;
-			break;
-		}
-		// returns the number value for number inputed
-		pegLoc[1] = ((int) coords[1]) - 49;
+		
 		// saves current selection
-		temp[0] = pegLoc[0];
-		temp[1] = pegLoc[1];
+		startCoords[0] = pegLoc[0];
+		startCoords[1] = pegLoc[1];
 		possibleMoves = checkPosMoves(pegLoc);
+		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
 		if (possibleMoves > 0)
 			return true;
 		else
@@ -379,8 +296,52 @@ public class MovePiece extends SelectPeg {
 			}
 
 		}
-		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
+		
 		return possibleMoves;
+	}
+	public static int[] parseStringToLoc(String coord){
+		char[] coords = coord.toCharArray();
+		int[] pegLoc = new int[2];
+		// Switch checks what is in the array[index] against the case's
+		switch (coords[0]) {
+		case 'a':
+			pegLoc[0] = 0;
+			break;
+		case 'A':
+			pegLoc[0] = 0;
+			break;
+		case 'b':
+			pegLoc[0] = 1;
+			break;
+		case 'B':
+			pegLoc[0] = 1;
+			break;
+		case 'c':
+			pegLoc[0] = 2;
+			break;
+		case 'C':
+			pegLoc[0] = 2;
+			break;
+		case 'd':
+			pegLoc[0] = 3;
+			break;
+		case 'D':
+			pegLoc[0] = 3;
+			break;
+		case 'e':
+			pegLoc[0] = 4;
+			break;
+		case 'E':
+			pegLoc[0] = 4;
+			break;
+		case 'f':
+		case 'F':
+			pegLoc[0] = 5;
+			break;
+		}
+		// returns the number 0-5
+		pegLoc[1] = ((int) coords[1]) - 49;
+		return pegLoc;
 	}
 
 	public static String parseLocToString(int[] pegLoc) {

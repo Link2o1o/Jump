@@ -7,7 +7,6 @@ public class UndoButton {
 		switch(type){
 		case 0:
 			SaveBoard.undo();
-			SquareBoard.printBoard();
 		}
 	}
 }

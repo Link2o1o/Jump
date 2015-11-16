@@ -15,7 +15,7 @@ public class EndGame {
 		for (int i = 0; i < SquareBoard.board.length; i++) {
 
 			for (int j = 0; j < SquareBoard.board.length; j++) {
-				int[] pegLoc = null;
+				int[] pegLoc = new int[2];
 				pegLoc[0] = i;
 				pegLoc[1] = j;
 				
