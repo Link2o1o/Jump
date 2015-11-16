@@ -1,4 +1,5 @@
 /* The mechanics behind undoing a move (eventually the button mechanics)
+	Programmer: Michael
  */
 package gameMechanics;
 

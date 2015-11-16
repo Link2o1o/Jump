@@ -1,3 +1,7 @@
+/**
+ * Allows for future expansion of boards
+ * Programmer: Michael
+ */
 package gameMechanics;
 
 public class Board {
@@ -7,7 +11,7 @@ public class Board {
 	
 	public Board(){
 	}
-	//unused methods, to be overwritten.
+	//unused methods, to be overwritten.  (Used in SquareBoard)
 	public static void fillBoard(){
 		
 	}

@@ -1,4 +1,5 @@
-/* The mechanics behind restarting the game. (eventually the button mechanics)
+/**The mechanics behind restarting the game. (eventually the button mechanics)
+ * Programmer: Michael
  */
 package gameMechanics;
 

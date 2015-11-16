@@ -1,3 +1,7 @@
+/**
+ * Resets the board to its start, StartButton resets undo's
+ * Programmer: Michael
+ */
 package gameMechanics;
 
 public class ResetBoard {

@@ -1,12 +1,17 @@
+/**
+ * Prompts for Peg selection, returns if piece can be moved then if so prompts for location to move to.
+ * Then checks if location to move to is valid and possible, Makes move if so.
+ * Programmer: Michael
+ */
 package gameMechanics;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MovePiece extends SelectPeg {
+public class MovePiece{
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
-	private static int[] startCoords = new int[2];
+	private static int[] selected = new int[2];
 
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
@@ -51,24 +56,26 @@ public class MovePiece extends SelectPeg {
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
-			if (startCoords[0] > pegLoc[0]) {
-				firstTemp = startCoords[0] - 1;
-			} else if (startCoords[0] < pegLoc[0]) {
+			if (selected[0] > selected[0]) {
+				firstTemp = selected[0] - 1;
+			} else if (selected[0] < pegLoc[0]) {
 				firstTemp = pegLoc[0] - 1;
 			} else
-				firstTemp = startCoords[0];
-			if (startCoords[1] > pegLoc[1]) {
-				secondTemp = startCoords[1] - 1;
-			} else if (startCoords[1] < pegLoc[1]) {
+				firstTemp = selected[0];
+			if (selected[1] > pegLoc[1]) {
+				secondTemp = selected[1] - 1;
+			} else if (selected[1] < pegLoc[1]) {
 				secondTemp = pegLoc[1] - 1;
 			} else
-				secondTemp = startCoords[1];
+				secondTemp = selected[1];
 			int[] temp = new int[2];
 			temp[0] = firstTemp;
 			temp[1] = secondTemp;
+			//Removes the starting location's peg and the peg jumped over
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
-			SquareBoard.board[startCoords[0]][startCoords[1]].setPlaced(false);
-			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(startCoords));
+			SquareBoard.board[selected[0]][selected[1]].setPlaced(false);
+			//saves the move
+			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(selected));
 		}
 		// Returns if what you put is an invalid move.
 		else
@@ -77,8 +84,7 @@ public class MovePiece extends SelectPeg {
 	}
 
 	/**
-	 * Checks each pick to see if it can be moved or not. Then saves the
-	 * selection into SelectPeg.
+	 * Checks for possible moves and returns true or false if the piece can be moved at all.
 	 */
 	public static boolean checkMoves(String coord) {
 		// The location selected in the array
@@ -87,8 +93,8 @@ public class MovePiece extends SelectPeg {
 		// returns the number value for character inputted
 		
 		// saves current selection
-		startCoords[0] = pegLoc[0];
-		startCoords[1] = pegLoc[1];
+		selected[0] = pegLoc[0];
+		selected[1] = pegLoc[1];
 		possibleMoves = checkPosMoves(pegLoc);
 		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
 		if (possibleMoves > 0)
@@ -96,7 +102,12 @@ public class MovePiece extends SelectPeg {
 		else
 			return false;
 	}
-
+	/**
+	 * Runs a check for possible moves, returns an int of possible moves.
+	 * Prevents moving outside the board and using pieces that cannot be moved.
+	 * @param pegLoc
+	 * @return
+	 */
 	public static int checkPosMoves(int[] pegLoc) {
 		/**
 		 * This is where it begins testing the quadrants of the array
@@ -299,6 +310,11 @@ public class MovePiece extends SelectPeg {
 		
 		return possibleMoves;
 	}
+	/**
+	 * Converts the user's input into an integer array returns that array
+	 * @param coord
+	 * @return
+	 */
 	public static int[] parseStringToLoc(String coord){
 		char[] coords = coord.toCharArray();
 		int[] pegLoc = new int[2];
@@ -343,7 +359,11 @@ public class MovePiece extends SelectPeg {
 		pegLoc[1] = ((int) coords[1]) - 49;
 		return pegLoc;
 	}
-
+	/**
+	 * Converts an integer array into a String, returns that string.
+	 * @param pegLoc
+	 * @return
+	 */
 	public static String parseLocToString(int[] pegLoc) {
 		String output = "";
 		switch (pegLoc[0]) {

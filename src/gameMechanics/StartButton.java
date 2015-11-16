@@ -1,4 +1,5 @@
-/* The mechanics behind starting the game.  Currently text based, but eventually will be a Window.
+/**The mechanics behind starting the game.  Currently text based, but eventually will be a Window.
+ * Programmer: Michael
  */
 package gameMechanics;
 

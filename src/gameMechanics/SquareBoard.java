@@ -1,7 +1,13 @@
+/**
+ * Creates and manages the board of pegs.
+ */
 package gameMechanics;
 
 public class SquareBoard extends Board {
-
+	
+	/**
+	 * Creates a basic Square board  Programmer: Michael
+	 */
 	public SquareBoard() {
 		SquareBoard.length = 6;
 		SquareBoard.height = 6;
@@ -9,30 +15,21 @@ public class SquareBoard extends Board {
 	}
 
 	/*
-	 * Fills the Square board
+	 * Fills the Square board Programmer: Jonas
 	 */
 	public static void fillBoard() {
 
 		for (int a = 0; a < SquareBoard.board.length; a++) {
 			for (int b = 0; b < SquareBoard.board.length; b++) {
-				//SaveBoard.firstSave[a][b] = new Peg();
-				//SaveBoard.secondSave[a][b] = new Peg();
-				//SaveBoard.thirdSave[a][b] = new Peg();
 				SquareBoard.board[a][b] = new Peg();
-				//SaveBoard.firstSave[a][b].setPlaced(true);
-				//SaveBoard.secondSave[a][b].setPlaced(true);
-				//SaveBoard.thirdSave[a][b].setPlaced(true);
 				SquareBoard.board[a][b].setPlaced(true);
 			}
 		}
-		//SaveBoard.firstSave[2][3].setPlaced(false);
-		//SaveBoard.secondSave[2][3].setPlaced(false);
-		//SaveBoard.thirdSave[2][3].setPlaced(false);
 		SquareBoard.board[2][3].setPlaced(false);
 	}
 
 	/*
-	 * Prints the Square board
+	 * Prints the Square board  Programmer: Jonas
 	 */
 	public static void printBoard() {
 
@@ -65,7 +62,7 @@ public class SquareBoard extends Board {
 	}
 
 	/*
-	 * returns the Board Length
+	 * returns the Board Length Programmer: Michael
 	 */
 	@Override
 	public int getLength() {
@@ -73,7 +70,7 @@ public class SquareBoard extends Board {
 	}
 
 	/*
-	 * returns the board height
+	 * returns the board height Programmer: Michael
 	 */
 	@Override
 	public int getHeight() {
@@ -81,7 +78,7 @@ public class SquareBoard extends Board {
 	}
 
 	/*
-	 * returns the board itself (These are kind of unnecessary)
+	 * returns the board itself (These are kind of unnecessary) Programmer: Michael
 	 */
 	@Override
 	public Peg[][] getBoard() {

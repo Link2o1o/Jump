@@ -1,3 +1,8 @@
+/**
+ * The class for creating pegs for the board, has is placed and valid placement.
+ * Valid placement is for various board sizes and preventing a piece from existing there.
+ * Programmer: Michael
+ */
 package gameMechanics;
 
 public class Peg {

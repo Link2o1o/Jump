@@ -1,11 +1,11 @@
+/**	Programmer: Michael
+ *	SaveBoard saves moves to an ArrayList and then retrieves each move and performs the opposite action.
+ */
 package gameMechanics;
 
 import java.util.ArrayList;
 
 public class SaveBoard {
-	static Peg[][] thirdSave;
-	static Peg[][] secondSave;
-	static Peg[][] firstSave;
 	static ArrayList<String> moves = new ArrayList<String>();
 	private static int possibleUndo = 3;
 	private static int index = 0;
@@ -16,7 +16,12 @@ public class SaveBoard {
 	public SaveBoard() {
 		moves.clear();
 	}
-
+	/**
+	 * Saves an entire move to an ArrayList to be retrieved later.
+	 * @param movedTo
+	 * @param jumpedOver
+	 * @param movedFrom
+	 */
 	public static void save(String movedTo, String jumpedOver, String movedFrom) {
 			moves.add(movedTo);
 			moves.add(jumpedOver);
@@ -29,7 +34,9 @@ public class SaveBoard {
 	 */
 	public static void undo() {
 		int[] firstMove, secondMove, thirdMove;
+		//limits three moves
 		if (possibleUndo != 0) {
+			//Retrieves the last move and reverses it.
 				firstMove = MovePiece.parseStringToLoc(moves.get(index-2));
 				SquareBoard.board[firstMove[0]][firstMove[1]].setPlaced(false);
 				secondMove = MovePiece.parseStringToLoc(moves.get(index-1));

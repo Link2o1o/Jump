@@ -1,3 +1,7 @@
+/**
+ *	Checks if the game can still be played, returns false if so.
+ *	Programmer: Jonas
+ */
 package gameMechanics;
 
 public class EndGame {
