@@ -22,12 +22,10 @@ public class MovePiece{
 			if(possibleCoords.isEmpty()){
 			System.out.print("\nEnter a set of coordinates (Letter then number): ");
 			coord = input.next();
-			coord.toUpperCase();
 			}
 			else{
 				System.out.print("\nEnter a set of coordinates (Letter then number)(Undo: \"U\" Reset: \"R\"): ");
 				coord = input.next();
-				coord.toUpperCase();
 			}
 			if (coord.equalsIgnoreCase("r")) {
 				new ResetButton(0);
@@ -56,7 +54,7 @@ public class MovePiece{
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
-			if (selected[0] > selected[0]) {
+			if (selected[0] > pegLoc[0]) {
 				firstTemp = selected[0] - 1;
 			} else if (selected[0] < pegLoc[0]) {
 				firstTemp = pegLoc[0] - 1;
@@ -78,8 +76,9 @@ public class MovePiece{
 			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(selected));
 		}
 		// Returns if what you put is an invalid move.
-		else
+		else{
 			System.out.println("\nInvalid move, try again.\n");
+		}
 		possibleCoords.clear();
 	}
 
@@ -95,7 +94,7 @@ public class MovePiece{
 		// saves current selection
 		selected[0] = pegLoc[0];
 		selected[1] = pegLoc[1];
-		possibleMoves = checkPosMoves(pegLoc);
+		possibleMoves = checkPosMoves(pegLoc, true);
 		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
 		if (possibleMoves > 0)
 			return true;
@@ -108,7 +107,7 @@ public class MovePiece{
 	 * @param pegLoc
 	 * @return
 	 */
-	public static int checkPosMoves(int[] pegLoc) {
+	public static int checkPosMoves(int[] pegLoc, boolean ifAdd) {
 		/**
 		 * This is where it begins testing the quadrants of the array
 		 */
@@ -120,6 +119,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -127,6 +127,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -138,6 +139,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -145,6 +147,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -156,6 +159,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
@@ -163,6 +167,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -172,6 +177,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
@@ -179,6 +185,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -189,6 +196,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -196,6 +204,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -203,6 +212,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -212,6 +222,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
@@ -219,6 +230,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -226,6 +238,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -235,6 +248,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
@@ -242,6 +256,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -249,6 +264,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -258,6 +274,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -265,6 +282,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}
@@ -272,6 +290,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -281,6 +300,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] + 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] - 2;
 			}
@@ -288,6 +308,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] + 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] + 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] - 2;
 			}
@@ -295,6 +316,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0]][pegLoc[1] - 1].isPlaced()) {
 				pegLoc[1] = pegLoc[1] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[1] = pegLoc[1] + 2;
 			}
@@ -302,6 +324,7 @@ public class MovePiece{
 					&& SquareBoard.board[pegLoc[0] - 1][pegLoc[1]].isPlaced()) {
 				pegLoc[0] = pegLoc[0] - 2;
 				possibleMoves++;
+				if(ifAdd)
 				possibleCoords.add(parseLocToString(pegLoc));
 				pegLoc[0] = pegLoc[0] + 2;
 			}

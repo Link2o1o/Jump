@@ -20,29 +20,43 @@ public class StartButton {
 				+ "\nselected and an empty spot immediately following the peg that was"
 				+ " \njumped over. You cannot move a peg one spot at a time, you must"
 				+ " \njump another peg. If you run out of moves or there is only"
-				+ " \none peg left over, the game is over.\n");
+				+ " \none peg left over, the game is over.\n" + "(Make sure to capitalize the letter)");
+		int firstRun = 0;
+		while (true) {
+			String choice= "";
+			if (firstRun != 1) {
+				System.out.print("Would you like to play? (Y/N): ");
+				choice = input.next();
+				firstRun = 1;
+			} else {
+				System.out.print("Would you like to play again? (Y/N): ");
+				choice = input.next();
+			}
 
-		System.out.print("Would you like to play? (Y/N): ");
-		String choice = input.next();
+			// Checks user prompt, runs game if Y
+			if (choice.equalsIgnoreCase("y")) {
+				new SquareBoard();
 
-		// Checks user prompt, runs game if Y
-		if (choice.equalsIgnoreCase("y")) {
-			new SquareBoard();
+				SquareBoard.fillBoard();
 
-			SquareBoard.fillBoard();
-
-			while (true) {
-				SquareBoard.printBoard();
-				new MovePiece();
-				if (EndGame.gameOver()) {
-					System.out.println("Game Over. No available moves");
-					break;
+				while (true) {
+					SquareBoard.printBoard();
+					new MovePiece();
+					SquareBoard.printBoard();
+					if (EndGame.gameOver()) {
+						EndGame.gameOverMessage();
+						break;
+					}
 				}
 			}
-		} else
-			System.out.println("Have a nice day!");
+			else{
+				System.out.print("Have a nice day!");
+				input.close();
+				break;
+			}
+		}
 
-		input.close();
+		
 	}
 
 }
