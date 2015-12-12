@@ -8,6 +8,9 @@ package gameMechanics;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gameGraphics.ResetButton;
+import gameGraphics.UndoButton;
+
 public class MovePiece{
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);

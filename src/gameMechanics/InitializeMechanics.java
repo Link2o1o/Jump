@@ -5,7 +5,7 @@ package gameMechanics;
 
 import java.util.Scanner;
 
-public class StartButton {
+public class InitializeMechanics {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);

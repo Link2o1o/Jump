@@ -1,7 +1,10 @@
 /**The mechanics behind restarting the game. (eventually the button mechanics)
  * Programmer: Michael
  */
-package gameMechanics;
+package gameGraphics;
+
+import gameMechanics.ResetBoard;
+import gameMechanics.SaveBoard;
 
 public class ResetButton {
 	public ResetButton(int type){
