@@ -3,7 +3,7 @@
  * Valid placement is for various board sizes and preventing a piece from existing there.
  * Programmer: Michael
  */
-package gameMechanics;
+package mechanics;
 
 public class Peg {
 	private boolean placed;

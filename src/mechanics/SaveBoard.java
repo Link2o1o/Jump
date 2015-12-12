@@ -1,7 +1,7 @@
 /**	Programmer: Michael
  *	SaveBoard saves moves to an ArrayList and then retrieves each move and performs the opposite action.
  */
-package gameMechanics;
+package mechanics;
 
 import java.util.ArrayList;
 

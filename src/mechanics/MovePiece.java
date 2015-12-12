@@ -3,13 +3,13 @@
  * Then checks if location to move to is valid and possible, Makes move if so.
  * Programmer: Michael
  */
-package gameMechanics;
+package mechanics;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import gameGraphics.ResetButton;
-import gameGraphics.UndoButton;
+import graphics.ResetButton;
+import graphics.UndoButton;
 
 public class MovePiece{
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();

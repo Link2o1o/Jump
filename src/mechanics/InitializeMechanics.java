@@ -1,7 +1,7 @@
 /**The mechanics behind starting the game.  Currently text based, but eventually will be a Window.
  * Programmer: Michael
  */
-package gameMechanics;
+package mechanics;
 
 import java.util.Scanner;
 

@@ -2,7 +2,7 @@
  * Allows for future expansion of boards
  * Programmer: Michael
  */
-package gameMechanics;
+package mechanics;
 
 public class Board {
 	protected static int length;

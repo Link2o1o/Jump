@@ -1,4 +1,4 @@
-package gameGraphics;
+package graphics;
 
 import javax.swing.*;
 

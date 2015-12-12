@@ -1,9 +1,9 @@
 /* The mechanics behind undoing a move (eventually the button mechanics)
 	Programmer: Michael
  */
-package gameGraphics;
+package graphics;
 
-import gameMechanics.SaveBoard;
+import mechanics.SaveBoard;
 
 public class UndoButton {
 	public UndoButton(int type){

@@ -1,4 +1,4 @@
-package gameGraphics;
+package graphics;
 
 import java.awt.Graphics;
 import javax.swing.JButton;

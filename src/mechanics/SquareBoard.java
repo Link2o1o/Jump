@@ -1,7 +1,7 @@
 /**
  * Creates and manages the board of pegs.
  */
-package gameMechanics;
+package mechanics;
 
 public class SquareBoard extends Board {
 	

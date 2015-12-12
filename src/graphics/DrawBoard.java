@@ -1,4 +1,4 @@
-package gameGraphics;
+package graphics;
 
 import java.awt.*;
 import javax.swing.JPanel;
