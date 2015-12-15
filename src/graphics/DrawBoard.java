@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,9 @@ public class DrawBoard implements ActionListener {
 		
 		DrawBoard.board = new PegButton[SquareBoard.board.length][SquareBoard.board[0].length];
 		
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);;
+		
 		Init.north.removeAll();
 		Init.south.removeAll();
 		Init.east.removeAll();
@@ -35,7 +39,24 @@ public class DrawBoard implements ActionListener {
 		
 		CreateBoard boardPanel = new CreateBoard();
 		Init.center.add(boardPanel);
-		boardPanel.setLayout(new GridLayout(6,6,10,10));
+		boardPanel.setLayout(new BorderLayout());
+		
+		JPanel southPlaceholder = new JPanel();
+		JPanel northPlaceholder = new JPanel();
+		JPanel eastPlaceholder = new JPanel();
+		JPanel westPlaceholder = new JPanel();
+		
+		southPlaceholder.setOpaque(false);
+		northPlaceholder.setOpaque(false);
+		eastPlaceholder.setOpaque(false);
+		westPlaceholder.setOpaque(false);
+		
+		boardPanel.add(southPlaceholder, BorderLayout.SOUTH);
+		boardPanel.add(northPlaceholder, BorderLayout.NORTH);
+		boardPanel.add(eastPlaceholder, BorderLayout.EAST);
+		boardPanel.add(westPlaceholder, BorderLayout.WEST);
+		boardPanel.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(6,6,10,10));
 		
 		for (int i = 0; i < SquareBoard.board.length; i++) {
 			for (int j = 0; j < SquareBoard.board[i].length; j++) {
@@ -47,7 +68,7 @@ public class DrawBoard implements ActionListener {
 				
 				DrawBoard.board[i][j] = temp;
 				temp.addActionListener(new PickMove());
-				boardPanel.add(temp);
+				panel.add(temp);
 			}
 		}
 		

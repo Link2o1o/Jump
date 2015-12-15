@@ -9,7 +9,7 @@ public class EndGame {
 	private static boolean gameOver;
 	private static int numberOfPegs;
 	public static String gameOverMessage;
-	private static final String MORE_THAN_THREE_LEFT = "Well done, you didn't quite remove all of them...  \nBetter luck next time.";
+	private static final String MORE_THAN_THREE_LEFT = "Well done, you didn't quite remove all of them... ";
 	private static final String THREE_LEFT = "You got it down to three!  So close.";
 	private static final String TWO_LEFT = "Just one left... You almost got it.";
 	private static final String ONE_LEFT = "Congratulations!  You beat the game!";

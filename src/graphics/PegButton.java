@@ -22,21 +22,21 @@ public class PegButton extends JButton {
 		graphic = g;
 		super.paintComponent(g);
 
-		if (!empty){
+		if (!empty) {
 			graphic.drawImage(marble, 0, 0, getWidth(), getHeight(), this);
-		switch (type) {
-		case 0:
-			if (highlighted) {
-				graphic.setColor(Color.GREEN);
+			switch (type) {
+			case 0:
+				if (highlighted) {
+					graphic.setColor(Color.GREEN);
+					graphic.drawOval(0, 0, getWidth(), getHeight());
+				}
+				break;
+			case 1:
+				if (highlighted)
+					graphic.setColor(Color.YELLOW);
 				graphic.drawOval(0, 0, getWidth(), getHeight());
+				break;
 			}
-			break;
-		case 1:
-			if(highlighted)
-				graphic.setColor(Color.YELLOW);
-				graphic.drawOval(0, 0, getWidth(), getHeight());
-			break;
-		}
 		}
 
 	}

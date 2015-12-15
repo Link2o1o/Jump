@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class Init {
 	public static JFrame frame = new JFrame("Jump");
+	public static DrawFrame innerFrame = new DrawFrame();
 	public static BorderLayout frameLayout = new BorderLayout(20,20);
 	public static JPanel north = new JPanel();
 	public static JPanel south = new JPanel();
@@ -19,7 +20,7 @@ public class Init {
 	public static JButton quit = new JButton("No");
 	public static int[] firstPick = new int[2];
 	public static void main(String[] args) {
-		frame.setLayout(frameLayout);
+		innerFrame.setLayout(frameLayout);
 		frame.setResizable(false);
 		firstPick = new int[]{0,0};
 				
@@ -46,25 +47,30 @@ public class Init {
 		startScreen.setEditable(false);
 		prompt.setLayout(new FlowLayout(FlowLayout.LEFT));
 		prompt.add(start);
+		prompt.setOpaque(false);
 		prompt.add(quit);
 		
-		
+		south.setOpaque(false);
 		north.setLayout(new FlowLayout(FlowLayout.LEFT));
+		north.setOpaque(false);
 		center.setLayout(new FlowLayout(FlowLayout.LEFT));
-		west.setLayout(new GridLayout(1,1));
-		east.setLayout(new GridLayout(1,1));
+		center.setOpaque(false);
+		//west.setLayout(new GridLayout(1,1));
+		west.setOpaque(false);
+		//east.setLayout(new GridLayout(1,1));
+		east.setOpaque(false);
 		
 		center.add(startScreen);
 		center.add(prompt);
-		east.add(new JPanel());
-		west.add(new JPanel());
 		
-		frame.add(north, BorderLayout.NORTH);
-		frame.add(south, BorderLayout.SOUTH);
-		frame.add(east, BorderLayout.EAST);
-		frame.add(west, BorderLayout.WEST);
-		frame.add(center, BorderLayout.CENTER);
+		innerFrame.add(north, BorderLayout.NORTH);
+		innerFrame.add(south, BorderLayout.SOUTH);
+		innerFrame.add(east, BorderLayout.EAST);
+		innerFrame.add(west, BorderLayout.WEST);
+		innerFrame.add(center, BorderLayout.CENTER);
 
+		frame.setLayout(new GridLayout());
+		frame.add(innerFrame);
 		frame.setSize(450, 450);
 		//frame.setSize(1000, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
