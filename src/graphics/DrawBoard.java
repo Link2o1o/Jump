@@ -17,7 +17,7 @@ public class DrawBoard implements ActionListener {
 		new SquareBoard();
 		SquareBoard.fillBoard();
 		
-		this.board = new PegButton[SquareBoard.board.length][SquareBoard.board[0].length];
+		DrawBoard.board = new PegButton[SquareBoard.board.length][SquareBoard.board[0].length];
 		
 		CreateBoard board = new CreateBoard();
 		Init.north.removeAll();
@@ -44,12 +44,12 @@ public class DrawBoard implements ActionListener {
 				temp.setBorderPainted(false);
 				temp.setFocusPainted(false);
 				
-				this.board[i][j] = temp;
+				DrawBoard.board[i][j] = temp;
 				temp.addActionListener(new PickMove());
 				board.add(temp);
 			}
 		}
-		this.board[2][3].setEmpty(true);
+		DrawBoard.board[2][3].setEmpty(true);
 
 		Init.frame.setVisible(true);
 	}

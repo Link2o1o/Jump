@@ -4,7 +4,6 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import mechanics.SquareBoard;
 
 public class Init {
 	public static JFrame frame = new JFrame("Jump");
