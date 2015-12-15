@@ -10,7 +10,7 @@ import mechanics.SquareBoard;
 
 public class DrawBoard implements ActionListener {
 	public static JButton[][] board = new JButton[SquareBoard.board.length][SquareBoard.board[0].length];
-
+	public static PickMove pickMoveListener = new PickMove();
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Init.north.removeAll();
@@ -28,23 +28,21 @@ public class DrawBoard implements ActionListener {
 				JButton temp;
 				if (SquareBoard.board[i][j].isPlaced()) {
 					temp = new PegButton();
-					/*
+					temp.addActionListener(pickMoveListener);
 					temp.setOpaque(false);
 					temp.setContentAreaFilled(false);
 					temp.setBorderPainted(false);
 					temp.setFocusPainted(false);
-					*/
 				} else {
 					temp = new EmptyPegButton();
-					/*
+					temp.addActionListener(pickMoveListener);
 					temp.setOpaque(false);
 					temp.setContentAreaFilled(false);
 					temp.setBorderPainted(false);
 					temp.setFocusPainted(false);
-					*/
 				}
+				
 				board[i][j] = temp;
-				temp.addActionListener(new PickMove());
 				Init.center.add(temp);
 			}
 		}

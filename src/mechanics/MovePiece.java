@@ -50,7 +50,7 @@ public class MovePiece{
 		}
 	}
 
-	private void movePeg(String moveCoord) {
+	public static void movePeg(String moveCoord) {
 		if (possibleCoords.contains(moveCoord)) {
 			int[] pegLoc = parseStringToLoc(moveCoord);
 			// Set the location moved to, to true.(Peg is there)
@@ -75,6 +75,7 @@ public class MovePiece{
 			//Removes the starting location's peg and the peg jumped over
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
 			SquareBoard.board[selected[0]][selected[1]].setPlaced(false);
+			System.out.println("Piece moved");
 			//saves the move
 			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(selected));
 		}
@@ -333,7 +334,8 @@ public class MovePiece{
 			}
 
 		}
-		
+		for(int i = 0; i < possibleCoords.size();i++)
+			System.out.println("The possible Coordinates are: " + possibleCoords.get(i));
 		return possibleMoves;
 	}
 	/**
