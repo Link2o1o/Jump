@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,8 +44,15 @@ public class PickMove implements ActionListener {
 					DrawBoard.board[i][j].setHighlights();
 				}
 			}
-		if(mechanics.EndGame.gameOver())
-			mechanics.EndGame.gameOverMessage();
+		if(mechanics.EndGame.gameOver()){
+			DrawBoard.infoText.setText(mechanics.EndGame.gameOverMessage());
+			DrawBoard.restart.setText("Would you like to play again? ");
+			Init.south.setLayout(new FlowLayout(FlowLayout.LEFT));
+			Init.frame.setSize(450,500);
+			Init.south.add(DrawBoard.restart);
+			Init.south.add(Init.start);
+			Init.south.add(Init.quit);
+		}
 		Init.frame.setVisible(true);
 	}
 

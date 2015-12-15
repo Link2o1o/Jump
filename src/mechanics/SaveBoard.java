@@ -9,7 +9,7 @@ import graphics.DrawBoard;
 
 public class SaveBoard {
 	static ArrayList<String> moves = new ArrayList<String>();
-	private static int possibleUndo = 3;
+	public static int possibleUndo = 3;
 	private static int index = 0;
 	public static String undoMessage;
 

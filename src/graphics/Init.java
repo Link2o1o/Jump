@@ -16,21 +16,19 @@ public class Init {
 	public static JPanel center = new JPanel();
 	public static JButton reset = new JButton("Reset");
 	public static JButton undo = new JButton("Undo");
+	public static JButton start = new JButton("Yes");
+	public static JButton quit = new JButton("No");
 	public static int[] firstPick = new int[2];
 	public static void main(String[] args) {
 		frame.setLayout(frameLayout);
 		frame.setResizable(false);
 		firstPick = new int[]{0,0};
-		
-		new SquareBoard();
-		SquareBoard.fillBoard();
-		
-		JButton start = new JButton("Yes");
-		JButton quit = new JButton("No");
+				
 		JPanel prompt = new JPanel();
 		DrawBoard listener = new DrawBoard();
 		JTextArea startScreen = new JTextArea();
 		
+		quit.addActionListener(new Quit());
 		start.addActionListener(listener);
 		
 		startScreen.setText("Objective: Move one peg at a time to jump over an adjacent peg,"
