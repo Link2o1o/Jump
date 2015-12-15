@@ -55,7 +55,7 @@ public class SaveBoard {
 				index = index - 3;
 				possibleUndo--;
 		} else
-			undoMessage = "You are out of UNDO's.";
+			undoMessage = ""+possibleUndo;
 
 	}
 

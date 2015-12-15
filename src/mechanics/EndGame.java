@@ -8,6 +8,12 @@ public class EndGame {
 
 	private static boolean gameOver;
 	private static int numberOfPegs;
+	public static String gameOverMessage;
+	private static final String MORE_THAN_THREE_LEFT = "Well done, you didn't quite remove all of them...  \nBetter luck next time.";
+	private static final String THREE_LEFT = "You got it down to three!  So close.";
+	private static final String TWO_LEFT = "Just one left... You almost got it.";
+	private static final String ONE_LEFT = "Congratulations!  You beat the game!";
+	private static final String ZERO_LEFT = "Thats cheating...  How could you possibly get rid of all the marbles...";
 
 	public EndGame() {
 
@@ -37,18 +43,18 @@ public class EndGame {
 		return gameOver;
 	}
 
-	public static void gameOverMessage() {
+	public static String gameOverMessage() {
 		if(numberOfPegs > 3){
-			System.out.println("Well done, you didn't quite remove all of them...  \nBetter luck next time.");
+			return gameOverMessage = MORE_THAN_THREE_LEFT;
 		}
 		else if(numberOfPegs > 2)
-			System.out.println("You got it down to three!  So close.");
+			return gameOverMessage = THREE_LEFT;
 		else if(numberOfPegs > 1)
-			System.out.println("Just one left... You almost got it.");
+			return gameOverMessage = TWO_LEFT;
 		else if(numberOfPegs > 0)
-			System.out.println("Congratulations!  You beat the game!");
+			return gameOverMessage = ONE_LEFT;
 		else
-			System.out.println("Thats cheating...  How could you possibly get it like that...");
+			return gameOverMessage = ZERO_LEFT;
 	}
 }
 

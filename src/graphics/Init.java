@@ -19,6 +19,7 @@ public class Init {
 	public static int[] firstPick = new int[2];
 	public static void main(String[] args) {
 		frame.setLayout(frameLayout);
+		frame.setResizable(false);
 		firstPick = new int[]{0,0};
 		
 		new SquareBoard();
