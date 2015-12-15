@@ -12,10 +12,8 @@ public class PegButton extends JButton {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.BLACK);
-		g.drawOval((int) (getWidth() * .1), (int) (getHeight() * .1), (int) (getWidth() * .8),
-				(int) (getHeight() * .8));
+		g.drawOval(0, 0,(int)(getWidth()*.98), (int)(getHeight()*.98));
 		g.setColor(Color.BLUE);
-		g.fillOval((int) (getWidth() * .1), (int) (getHeight() * .1), (int) (getWidth() * .8),
-				(int) (getHeight() * .8));
+		g.fillOval(0, 0,(int)(getWidth()*.98), (int)(getHeight()*.98));
 	}
 }
