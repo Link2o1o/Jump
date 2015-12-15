@@ -23,17 +23,19 @@ public class PickMove implements ActionListener {
 							if (MovePiece.checkMoves(coord)) {
 								Init.firstPick = pegLoc;
 								picking = false;
+								DrawBoard.board[i][j].setHighlights(true, PegButton.FULL);
+								//DrawBoard.board[i][j].setHighlights(false, PegButton.CLEAR);
 							}
 						}
 						else{
 							if (pegLoc[0] != Init.firstPick[0] || pegLoc[1] != Init.firstPick[1]) {
+								DrawBoard.board[i][j].setHighlights(false, PegButton.CLEAR);
 								MovePiece.movePeg(MovePiece.parseLocToString(pegLoc));
-								//DrawBoard.board[i][j].setEmpty(false);
-								//DrawBoard.board[]
 								picking = true;
 							}
 						}
 					}
+					DrawBoard.board[i][j].repaint();
 			}
 		for (int i = 0; i < DrawBoard.board.length; i++)
 			for (int j = 0; j < DrawBoard.board[i].length; j++) {
@@ -41,7 +43,10 @@ public class PickMove implements ActionListener {
 				pegLoc[0] = i;
 				pegLoc[1] = j;
 				if (MovePiece.getPossibleCoords().equals(pegLoc)) {
-					DrawBoard.board[i][j].setHighlights();
+					if(DrawBoard.board[i][j].isHighlighted())
+						DrawBoard.board[i][j].setHighlights(false);
+					else
+						DrawBoard.board[i][j].setHighlights(true, PegButton.EMPTY);
 				}
 			}
 		if(mechanics.EndGame.gameOver()){

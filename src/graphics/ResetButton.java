@@ -18,6 +18,7 @@ public class ResetButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new ResetBoard(type);
+		new DrawBoard();
 		new SaveBoard();
 	}
 }

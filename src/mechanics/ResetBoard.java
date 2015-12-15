@@ -4,6 +4,8 @@
  */
 package mechanics;
 
+import graphics.DrawBoard;
+
 public class ResetBoard {
 	public ResetBoard(int type){
 		switch(type){
