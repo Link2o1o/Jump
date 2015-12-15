@@ -33,7 +33,7 @@ public class DrawBoard implements ActionListener {
 		Init.north.add(Init.undo);
 		infoText.setText("Undo's Left: 3");
 		Init.north.add(infoText);
-		Init.reset.addActionListener(new ResetButton(0));
+		Init.reset.addActionListener(new DrawBoard());
 		Init.undo.addActionListener(new UndoButton(0));
 		Init.center.setLayout(new GridLayout(1, 1, -15, -15));
 		
