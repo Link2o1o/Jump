@@ -5,9 +5,9 @@
 package mechanics;
 
 public class Board {
-	protected static int length;
-	protected static int height;
-	protected static Peg[][] board = new Peg[length][height];
+	public static int length;
+	public static int height;
+	public static Peg[][] board = new Peg[length][height];
 	
 	public Board(){
 	}
