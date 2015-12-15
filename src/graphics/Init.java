@@ -16,9 +16,10 @@ public class Init {
 	public static JPanel center = new JPanel();
 	public static JButton reset = new JButton("Reset");
 	public static JButton undo = new JButton("Undo");
-
+	public static int[] firstPick = new int[2];
 	public static void main(String[] args) {
 		frame.setLayout(frameLayout);
+		firstPick = new int[]{0,0};
 		
 		new SquareBoard();
 		SquareBoard.fillBoard();
@@ -26,7 +27,7 @@ public class Init {
 		JButton start = new JButton("Yes");
 		JButton quit = new JButton("No");
 		JPanel prompt = new JPanel();
-		JumpActions listener = new JumpActions();
+		DrawBoard listener = new DrawBoard();
 		JTextArea startScreen = new JTextArea();
 		
 		start.addActionListener(listener);

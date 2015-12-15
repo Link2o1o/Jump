@@ -432,5 +432,8 @@ public class MovePiece{
 		}
 		return output;
 	}
+	public static ArrayList<String> getPossibleCoords(){
+		return possibleCoords;
+	}
 
 }
