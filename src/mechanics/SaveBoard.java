@@ -5,10 +5,13 @@ package mechanics;
 
 import java.util.ArrayList;
 
+import graphics.DrawBoard;
+
 public class SaveBoard {
 	static ArrayList<String> moves = new ArrayList<String>();
 	private static int possibleUndo = 3;
 	private static int index = 0;
+	public static String undoMessage;
 
 	/**
 	 * no-arg constructor, currently used to make empty SaveBoard Objects
@@ -39,17 +42,20 @@ public class SaveBoard {
 			//Retrieves the last move and reverses it.
 				firstMove = MovePiece.parseStringToLoc(moves.get(index-2));
 				SquareBoard.board[firstMove[0]][firstMove[1]].setPlaced(false);
+				DrawBoard.board[firstMove[0]][firstMove[1]].setEmpty(true);
 				secondMove = MovePiece.parseStringToLoc(moves.get(index-1));
 				SquareBoard.board[secondMove[0]][secondMove[1]].setPlaced(true);
+				DrawBoard.board[secondMove[0]][secondMove[1]].setEmpty(false);
 				thirdMove = MovePiece.parseStringToLoc(moves.get(index));
 				SquareBoard.board[thirdMove[0]][thirdMove[1]].setPlaced(true);
+				DrawBoard.board[thirdMove[0]][thirdMove[1]].setEmpty(false);
 				moves.remove(index-2);
 				moves.remove(index-2);
 				moves.remove(index-2);
 				index = index - 3;
 				possibleUndo--;
 		} else
-			System.out.println("You are out of UNDO's.");
+			undoMessage = "You are out of UNDO's.";
 
 	}
 

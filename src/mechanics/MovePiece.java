@@ -8,6 +8,7 @@ package mechanics;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import graphics.DrawBoard;
 import graphics.ResetButton;
 import graphics.UndoButton;
 
@@ -15,7 +16,8 @@ public class MovePiece{
 	private static ArrayList<String> possibleCoords = new ArrayList<String>();
 	private Scanner input = new Scanner(System.in);
 	private static int[] selected = new int[2];
-
+	public static String posMoves;
+	public static String invalidMove;
 	/**
 	 * Runs the prompt for picking a peg to move, and tests it.
 	 */
@@ -55,6 +57,8 @@ public class MovePiece{
 			int[] pegLoc = parseStringToLoc(moveCoord);
 			// Set the location moved to, to true.(Peg is there)
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
+			DrawBoard.board[pegLoc[0]][pegLoc[1]].setEmpty(false);
+
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
 			if (selected[0] > pegLoc[0]) {
@@ -74,14 +78,16 @@ public class MovePiece{
 			temp[1] = secondTemp;
 			//Removes the starting location's peg and the peg jumped over
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
+			DrawBoard.board[firstTemp][secondTemp].setEmpty(true);
 			SquareBoard.board[selected[0]][selected[1]].setPlaced(false);
-			System.out.println("Piece moved");
+			DrawBoard.board[selected[0]][selected[1]].setEmpty(true);
+
 			//saves the move
 			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(selected));
 		}
 		// Returns if what you put is an invalid move.
 		else{
-			System.out.println("\nInvalid move, try again.\n");
+			invalidMove = "Invalid move, try again.";
 		}
 		possibleCoords.clear();
 	}
@@ -99,7 +105,7 @@ public class MovePiece{
 		selected[0] = pegLoc[0];
 		selected[1] = pegLoc[1];
 		possibleMoves = checkPosMoves(pegLoc, true);
-		System.out.println("Amount of possible moves for selected peg: " + possibleMoves);
+		posMoves ="Amount of possible moves for selected peg: " + possibleMoves;
 		if (possibleMoves > 0)
 			return true;
 		else
@@ -334,8 +340,7 @@ public class MovePiece{
 			}
 
 		}
-		for(int i = 0; i < possibleCoords.size();i++)
-			System.out.println("The possible Coordinates are: " + possibleCoords.get(i));
+		
 		return possibleMoves;
 	}
 	/**
