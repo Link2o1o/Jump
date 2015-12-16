@@ -28,8 +28,8 @@ public class PegButton extends JButton {
 			case 0:
 				if (highlighted) {
 					graphic.setColor(Color.CYAN);
-					for(int i = 0; i < 30; i++)
-						graphic.drawOval((int)(0+i*.1) , (int)(0+i*.1), (int)(getWidth()-i*.1), (int)(getHeight()-i*.1));
+					for(int i = 0; i < 20; i++)
+						graphic.drawOval((int)(0+i*.1) , (int)(0+i*.1), (int)(getWidth()-i*.2), (int)(getHeight()-i*.2));
 				}
 				break;
 			case 1:
