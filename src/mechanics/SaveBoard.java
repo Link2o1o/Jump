@@ -5,7 +5,7 @@ package mechanics;
 
 import java.util.ArrayList;
 
-import graphics.DrawBoard;
+import graphics.CreateBoard;
 
 public class SaveBoard {
 	static ArrayList<String> moves = new ArrayList<String>();
@@ -42,13 +42,13 @@ public class SaveBoard {
 			//Retrieves the last move and reverses it.
 				firstMove = MovePiece.parseStringToLoc(moves.get(index-2));
 				SquareBoard.board[firstMove[0]][firstMove[1]].setPlaced(false);
-				DrawBoard.board[firstMove[0]][firstMove[1]].setEmpty(true);
+				CreateBoard.board[firstMove[0]][firstMove[1]].setEmpty(true);
 				secondMove = MovePiece.parseStringToLoc(moves.get(index-1));
 				SquareBoard.board[secondMove[0]][secondMove[1]].setPlaced(true);
-				DrawBoard.board[secondMove[0]][secondMove[1]].setEmpty(false);
+				CreateBoard.board[secondMove[0]][secondMove[1]].setEmpty(false);
 				thirdMove = MovePiece.parseStringToLoc(moves.get(index));
 				SquareBoard.board[thirdMove[0]][thirdMove[1]].setPlaced(true);
-				DrawBoard.board[thirdMove[0]][thirdMove[1]].setEmpty(false);
+				CreateBoard.board[thirdMove[0]][thirdMove[1]].setEmpty(false);
 				moves.remove(index-2);
 				moves.remove(index-2);
 				moves.remove(index-2);

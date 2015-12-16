@@ -27,14 +27,16 @@ public class PegButton extends JButton {
 			switch (type) {
 			case 0:
 				if (highlighted) {
-					graphic.setColor(Color.GREEN);
-					graphic.drawOval(0, 0, getWidth(), getHeight());
+					graphic.setColor(Color.CYAN);
+					for(int i = 0; i < 30; i++)
+						graphic.drawOval((int)(0+i*.1) , (int)(0+i*.1), (int)(getWidth()-i*.1), (int)(getHeight()-i*.1));
 				}
 				break;
 			case 1:
-				if (highlighted)
+				if (highlighted){
 					graphic.setColor(Color.YELLOW);
-				graphic.drawOval(0, 0, getWidth(), getHeight());
+					graphic.drawOval(0, 0, getWidth(), getHeight());
+				}
 				break;
 			}
 		}
@@ -60,5 +62,10 @@ public class PegButton extends JButton {
 	public boolean isHighlighted() {
 		// TODO Auto-generated method stub
 		return highlighted;
+	}
+
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return this.empty;
 	}
 }

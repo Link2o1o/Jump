@@ -8,7 +8,7 @@ package mechanics;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import graphics.DrawBoard;
+import graphics.CreateBoard;
 import graphics.ResetButton;
 import graphics.UndoButton;
 
@@ -57,7 +57,7 @@ public class MovePiece{
 			int[] pegLoc = parseStringToLoc(moveCoord);
 			// Set the location moved to, to true.(Peg is there)
 			SquareBoard.board[pegLoc[0]][pegLoc[1]].setPlaced(true);
-			DrawBoard.board[pegLoc[0]][pegLoc[1]].setEmpty(false);
+			CreateBoard.board[pegLoc[0]][pegLoc[1]].setEmpty(false);
 
 			// Checks for removing the peg jumped over
 			int firstTemp = 0, secondTemp = 0;
@@ -78,9 +78,9 @@ public class MovePiece{
 			temp[1] = secondTemp;
 			//Removes the starting location's peg and the peg jumped over
 			SquareBoard.board[firstTemp][secondTemp].setPlaced(false);
-			DrawBoard.board[firstTemp][secondTemp].setEmpty(true);
+			CreateBoard.board[firstTemp][secondTemp].setEmpty(true);
 			SquareBoard.board[selected[0]][selected[1]].setPlaced(false);
-			DrawBoard.board[selected[0]][selected[1]].setEmpty(true);
+			CreateBoard.board[selected[0]][selected[1]].setEmpty(true);
 
 			//saves the move
 			SaveBoard.save(parseLocToString(pegLoc), parseLocToString(temp), parseLocToString(selected));

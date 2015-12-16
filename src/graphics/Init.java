@@ -25,7 +25,7 @@ public class Init {
 		firstPick = new int[]{0,0};
 				
 		JPanel prompt = new JPanel();
-		DrawBoard listener = new DrawBoard();
+		CreateBoard listener = new CreateBoard();
 		JTextArea startScreen = new JTextArea();
 		
 		quit.addActionListener(new Quit());
