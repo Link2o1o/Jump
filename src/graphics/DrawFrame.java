@@ -1,3 +1,6 @@
+/**Creates the background for the frame
+ * Programmer: Michael
+ */
 package graphics;
 
 import java.awt.Graphics;

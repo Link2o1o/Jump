@@ -1,3 +1,6 @@
+/**Draws the board onto a panel to be displayed
+ * Programmer: Michael
+ */
 package graphics;
 
 import java.awt.Graphics;

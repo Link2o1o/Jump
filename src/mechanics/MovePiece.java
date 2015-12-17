@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import graphics.CreateBoard;
-import graphics.ResetButton;
 import graphics.UndoButton;
 
 public class MovePiece{
@@ -33,7 +32,7 @@ public class MovePiece{
 				coord = input.next();
 			}
 			if (coord.equalsIgnoreCase("r")) {
-				new ResetButton(0);
+				new ResetFunction(0);
 				break;
 			} else if (coord.equalsIgnoreCase("u")) {
 				new UndoButton(0);

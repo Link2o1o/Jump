@@ -1,3 +1,6 @@
+/**Sets the Boards marble color depending on radio button selection
+ * Programmer: Michael
+ */
 package graphics;
 
 import java.awt.event.ActionEvent;

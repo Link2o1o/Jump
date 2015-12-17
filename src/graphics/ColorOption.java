@@ -1,3 +1,6 @@
+/**The class that displays the color of marble to be selected, uses JPanel
+ * Programmer: Michael
+ */
 package graphics;
 
 import java.awt.Graphics;

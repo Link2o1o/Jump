@@ -1,3 +1,6 @@
+/**A helper class design to bridge the peg class from the mechanics and buttons
+ * Programmer: Michael and Jonas
+ */
 package graphics;
 
 import java.awt.*;
@@ -6,7 +9,7 @@ import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class PegButton extends JButton {
-
+	//Initializes colors and marbles
 	public static final int RED = 0;
 	public static final int BLUE = 1;
 	public static final int GREEN = 2;
@@ -28,11 +31,14 @@ public class PegButton extends JButton {
 	private Graphics graphic;
 
 	@Override
+	//Paints the button according to color and if its highlighted, also removes the marble's icon
 	protected void paintComponent(Graphics g) {
 		graphic = g;
 		super.paintComponent(g);
 
+		//Checks if there is a marble there or not
 		if (!empty) {
+			//Takes the color and returns the image of the appropriate color
 			switch (colorType) {
 			case 0:
 				graphic.drawImage(rMarble, 0, 0, getWidth(), getHeight(), this);
@@ -50,7 +56,7 @@ public class PegButton extends JButton {
 				graphic.drawImage(yMarble, 0, 0, getWidth(), getHeight(), this);
 				break;
 			}
-
+			//Highlights the button selected
 			if (highlighted) {
 				graphic.setColor(Color.CYAN);
 				for (int i = 0; i < 20; i++)
@@ -60,27 +66,32 @@ public class PegButton extends JButton {
 		}
 
 	}
-
+	
+	//Used to set if the button is highlighted or not
 	public void setHighlights(boolean isHighlighted) {
 		highlighted = isHighlighted;
 		repaint();
 	}
 
+	//Used to set if the marble is there or not
 	public void setEmpty(boolean isEmpty) {
 		empty = isEmpty;
 		repaint();
 	}
 
+	//returns its state, if highlighted
 	public boolean isHighlighted() {
 		// TODO Auto-generated method stub
 		return highlighted;
 	}
-
+	
+	//returns its state, if empty or not
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return this.empty;
 	}
 
+	//Used to set the type of Color to be used for the marbles
 	public void setColorType(int colorType) {
 		this.colorType = colorType;
 	}

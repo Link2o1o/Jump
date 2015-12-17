@@ -1,3 +1,6 @@
+/**Closes the frame
+ * Programmer: Michael
+ */
 package graphics;
 
 import java.awt.event.ActionEvent;
