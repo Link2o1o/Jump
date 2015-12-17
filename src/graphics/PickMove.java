@@ -20,7 +20,7 @@ public class PickMove implements ActionListener {
 				if (CreateBoard.board[i][j].isHighlighted())
 					CreateBoard.board[i][j].setHighlights(false);
 				else if(e.getSource() == CreateBoard.board[i][j])
-					CreateBoard.board[i][j].setHighlights(true, PegButton.FULL);
+					CreateBoard.board[i][j].setHighlights(true);
 				if (e.getSource() == CreateBoard.board[i][j]) {
 					if (picking) {
 						String coord = MovePiece.parseLocToString(pegLoc);
@@ -30,14 +30,12 @@ public class PickMove implements ActionListener {
 						}
 					} else {
 						if (pegLoc[0] != Init.firstPick[0] || pegLoc[1] != Init.firstPick[1]) {
-							CreateBoard.board[i][j].setHighlights(false, PegButton.CLEAR);
+							CreateBoard.board[i][j].setHighlights(false);
 							MovePiece.movePeg(MovePiece.parseLocToString(pegLoc));
 							picking = true;
 						}
 					}
 				}
-				if(CreateBoard.board[i][j].isEmpty() && MovePiece.getPossibleCoords().contains(MovePiece.parseLocToString(pegLoc)))
-					CreateBoard.board[i][j].setHighlights(true, PegButton.EMPTY);
 				CreateBoard.board[i][j].repaint();
 			}
 		if (mechanics.EndGame.gameOver()) {

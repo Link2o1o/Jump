@@ -25,11 +25,10 @@ public class Init {
 		firstPick = new int[]{0,0};
 				
 		JPanel prompt = new JPanel();
-		CreateBoard listener = new CreateBoard();
 		JTextArea startScreen = new JTextArea();
 		
 		quit.addActionListener(new Quit());
-		start.addActionListener(listener);
+		start.addActionListener(new PickColorMarble());
 		
 		startScreen.setText("Objective: Move one peg at a time to jump over an adjacent peg,"
 				+ " \nremoving the peg that was jumped over and continue to do so"

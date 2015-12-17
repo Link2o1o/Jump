@@ -13,6 +13,7 @@ public class CreateBoard implements ActionListener {
 	public static PegButton[][] board;
 	public static JLabel infoText = new JLabel();
 	public static JLabel restart = new JLabel();
+	private static int boardColor;
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		new SquareBoard();
@@ -61,6 +62,7 @@ public class CreateBoard implements ActionListener {
 		for (int i = 0; i < SquareBoard.board.length; i++) {
 			for (int j = 0; j < SquareBoard.board[i].length; j++) {
 				PegButton temp = new PegButton();
+				temp.setColorType(boardColor);
 				temp.setOpaque(false);
 				temp.setContentAreaFilled(false);
 				temp.setBorderPainted(false);
@@ -76,8 +78,8 @@ public class CreateBoard implements ActionListener {
 
 		Init.frame.setVisible(true);
 	}
-	public static void redrawBoard() {
-		
+	
+	public static void setBoardColor(int boardColor) {
+		CreateBoard.boardColor = boardColor;
 	}
-
 }
