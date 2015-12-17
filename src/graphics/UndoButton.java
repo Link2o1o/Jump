@@ -19,7 +19,8 @@ public class UndoButton implements ActionListener{
 		switch(type){
 		case 0:
 			SaveBoard.undo();
+			break;
 		}
-		CreateBoard.infoText.setText("Undo's Left: " + SaveBoard.possibleUndo);
+		CreateBoard.undoText.setText("Undo's Left: " + SaveBoard.possibleUndo);
 	}
 }

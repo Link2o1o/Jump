@@ -35,6 +35,8 @@ public class Init {
 		//Adds action listeners to the "Yes" and "No" buttons, start and quit respectively
 		quit.addActionListener(new Quit());
 		start.addActionListener(new PickColorMarble());
+		reset.addActionListener(new CreateBoard());
+		undo.addActionListener(new UndoButton(0));
 		
 		//Sets the prompts text size and makes it not editable
 		startScreen.setText("                   Objective\n\n  Move one peg at a time to jump over an adjacent peg,"

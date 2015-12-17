@@ -10,11 +10,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import mechanics.SaveBoard;
 import mechanics.SquareBoard;
 
 public class CreateBoard implements ActionListener {
 	public static PegButton[][] board;
-	public static JLabel infoText = new JLabel();
+	public static JLabel undoText = new JLabel();
 	public static JLabel restart = new JLabel();
 	private static int boardColor;
 	@Override
@@ -28,7 +29,8 @@ public class CreateBoard implements ActionListener {
 		
 		//Creates the panel to put the board in and makes it invisible
 		JPanel panel = new JPanel();
-		panel.setOpaque(false);;
+		panel.setOpaque(false);
+		SaveBoard.resetUndo();
 		
 		//Removes the previous components, from the last prompt
 		Init.north.removeAll();
@@ -40,10 +42,8 @@ public class CreateBoard implements ActionListener {
 		//Adds the elements to the top of the screen and sets their action listeners
 		Init.north.add(Init.reset);
 		Init.north.add(Init.undo);
-		infoText.setText("Undo's Left: 3");
-		Init.north.add(infoText);
-		Init.reset.addActionListener(new CreateBoard());
-		Init.undo.addActionListener(new UndoButton(0));
+		CreateBoard.undoText.setText("Undo's Left: 3");
+		Init.north.add(undoText);
 		
 		//Sets the Layout of the center for the board.
 		Init.center.setLayout(new GridLayout(1, 1));

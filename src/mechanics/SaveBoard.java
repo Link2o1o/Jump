@@ -58,5 +58,12 @@ public class SaveBoard {
 			undoMessage = ""+possibleUndo;
 
 	}
+	
+	public static void resetUndo(){
+		CreateBoard.undoText.setText("Undo's left: 3");
+		SaveBoard.moves.clear();
+		SaveBoard.index = 0;
+		SaveBoard.possibleUndo = 3;
+	}
 
 }
