@@ -51,7 +51,7 @@ public class PickMove implements ActionListener {
 			}
 		//Checks for end game conditions then adds the end game message and prompts if user would like to play again
 		if (mechanics.EndGame.gameOver()) {
-			CreateBoard.infoText.setText(mechanics.EndGame.gameOverMessage());
+			CreateBoard.undoText.setText(mechanics.EndGame.gameOverMessage());
 			CreateBoard.restart.setText("Would you like to play again? ");
 			Init.south.setLayout(new FlowLayout(FlowLayout.LEFT));
 			Init.frame.setSize(450, 490);
