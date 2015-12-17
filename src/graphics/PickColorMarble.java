@@ -25,6 +25,9 @@ public class PickColorMarble implements ActionListener {
 		Init.east.removeAll();
 		Init.west.removeAll();
 		Init.center.removeAll();
+		
+		Init.frame.setSize(450,450);
+
 		//Creates three panels to be displayed in a GridLayout
 		JPanel radioPanel = new JPanel();
 		radioPanel.setOpaque(false);
