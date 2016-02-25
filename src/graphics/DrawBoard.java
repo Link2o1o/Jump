@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class DrawBoard extends JPanel{
-	ImageIcon icon = new ImageIcon("images/Board.png");
+	ImageIcon icon = new ImageIcon("src/images/Board.png");
 	Image img = icon.getImage();
 	@Override
 	protected void paintComponent(Graphics g){

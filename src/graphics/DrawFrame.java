@@ -12,7 +12,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class DrawFrame extends JPanel {
 	
-	ImageIcon imageIcon = new ImageIcon("images/Frame.png");
+	ImageIcon imageIcon = new ImageIcon("src/images/Frame.png");
 	Image frame = imageIcon.getImage();
 
 	protected void paintComponent (Graphics g){

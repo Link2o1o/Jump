@@ -10,19 +10,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import mechanics.GameTimer;
 import mechanics.SaveBoard;
 import mechanics.SquareBoard;
 
 public class CreateBoard implements ActionListener {
 	public static PegButton[][] board;
 	public static JLabel undoText = new JLabel();
+	public static JLabel timer = new JLabel();
 	public static JLabel restart = new JLabel();
 	private static int boardColor;
+	protected static Timer clock = new Timer(1000, new GameTimer());
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//Creates the mechanics side of the board
 		new SquareBoard();
 		SquareBoard.fillBoard();
+		clock.start();
 		
 		//Sets the boards size and layout
 		CreateBoard.board = new PegButton[SquareBoard.board.length][SquareBoard.board[0].length];
@@ -40,10 +44,13 @@ public class CreateBoard implements ActionListener {
 		Init.center.removeAll();
 		
 		//Adds the elements to the top of the screen and sets their action listeners
+		timer.setText("0:00");
+		Init.north.add(timer);
 		Init.north.add(Init.reset);
 		Init.north.add(Init.undo);
 		CreateBoard.undoText.setText("Undo's Left: 3");
 		Init.north.add(undoText);
+		
 		
 		//Sets the Layout of the center for the board.
 		Init.center.setLayout(new GridLayout(1, 1));

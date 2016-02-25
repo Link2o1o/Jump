@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Timer;
+
+import mechanics.EndGameTimer;
 import mechanics.MovePiece;
 import mechanics.SaveBoard;
 
@@ -52,6 +55,9 @@ public class PickMove implements ActionListener {
 			}
 		//Checks for end game conditions then adds the end game message and prompts if user would like to play again
 		if (mechanics.EndGame.gameOver() && SaveBoard.possibleUndo == 0) {
+			CreateBoard.clock.stop();
+			Timer t = new Timer(1000, new EndGameTimer());
+			t.start();
 			CreateBoard.undoText.setText(mechanics.EndGame.gameOverMessage());
 			CreateBoard.restart.setText("Would you like to play again? ");
 			Init.south.setLayout(new FlowLayout(FlowLayout.LEFT));

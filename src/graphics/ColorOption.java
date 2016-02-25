@@ -23,7 +23,7 @@ public class ColorOption extends JPanel{
 	}
 
 	public void setColor(String color) {
-		imageIcon = new ImageIcon("images/"+color+"Marble.png");
+		imageIcon = new ImageIcon("src/images/"+color+"Marble.png");
 		panel = imageIcon.getImage();
 	}
 }
